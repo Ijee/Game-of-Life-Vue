@@ -1,6 +1,6 @@
-<template/>
-
-<script>
+<template>
+  <div/>
+</template>
 export default {
   data() {},
 };

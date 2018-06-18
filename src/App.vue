@@ -29,15 +29,20 @@
 </template>
 
 <script>
+// Imports
+import Control from './components/Control.vue';
+
 export default {
   name: 'App',
+  components: {
+    'app-control': Control,
+  },
   data() {
     return {};
   },
 };
 </script>
-// Imports
-import Control from './components/Control.Vue';
+
 <style lang="scss">
 html,
 body {

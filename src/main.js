@@ -5,5 +5,4 @@ import 'bulma/css/bulma.css';
 let app = new Vue({
   el: '#app',
   render: (h) => h(App),
-})
-;
+});
