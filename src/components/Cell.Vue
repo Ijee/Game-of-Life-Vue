@@ -1,13 +1,9 @@
-<template>
-
-</template>
+<template/>
 
 <script>
-    export default {
-        data () {
-
-        }
-    }
+export default {
+  data() {},
+};
 </script>
 
 <style>
@@ -16,10 +12,10 @@
   height: 90px;
   border: 6px solid #2c3e50;
   font-size: 3.5em;
-  font-family: 'Gochi Hand', sans-serif;
+  font-family: "Gochi Hand", sans-serif;
 }
 
 .cell:hover {
-    background-color: #7f8c8d;
+  background-color: #7f8c8d;
 }
 </style>

@@ -1,40 +1,39 @@
 <template>
-    <div class="GOL">
+  <div class="GOL">
     <section class="section has-background-primary">
-    <div class="container">
-      <h1 class="title">Game of Life</h1>
-      <h2 class="subtitle has-text-grey-dark">
-        A simple <strong>Game of Life</strong> implementation built with vuejs and bulma css framework. 
-        Repository <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
-      </h2>
-    </div>
-  </section>
-  <hr class="hr">
-     <section class="section is-primary">
-       <div class="container"> 
-         <div class="columns">
-           <div class="column box is-10 is-offset-1">
-dasdsa  
-           </div>
-         </div>
-       </div>
-     </section>
-      
-     
- <hr class="hr">s
-<footer class="footer has-background-primary">
-  <app-control>
-</footer>
-    </div>
+      <div class="container">
+        <h1 class="title">Game of Life</h1>
+        <h2 class="subtitle has-text-grey-dark">
+          A simple
+          <strong>Game of Life</strong> implementation built with vuejs and bulma css framework. Repository
+          <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
+        </h2>
+      </div>
+    </section>
+    <hr class="hr">
+    <section class="section is-primary">
+      <div class="container">
+        <div class="columns">
+          <div class="column box is-10 is-offset-1">
+            dasdsa
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <hr class="hr">s
+    <footer class="footer has-background-primary">
+      <app-control/>
+    </footer>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "app",
+  name: 'App',
   data() {
     return {};
-  }
+  },
 };
 </script>
 // Imports
