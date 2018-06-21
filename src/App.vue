@@ -4,8 +4,7 @@
       <div class="container">
         <h1 class="title">Game of Life</h1>
         <h2 class="subtitle has-text-grey-dark">
-          A simple
-          <strong>Game of Life</strong> implementation built with vuejs and bulma css framework. Repository
+          Implementation of Conway's Game of Life built with vuejs 2 and bulma css framework. Repository
           <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
         </h2>
       </div>
@@ -15,27 +14,28 @@
       <div class="container">
         <div class="columns">
           <div class="column box is-10 is-offset-1">
-            dasdsa
+            <app-grid/>
           </div>
         </div>
-      </div>
-    </section>
+    </div></section>
 
-    <hr class="hr">s
+    <hr class="hr">
     <footer class="footer has-background-primary">
-      <app-control/>
+
+      <app-controller/>
     </footer>
   </div>
 </template>
 
 <script>
 // Imports
-import Control from './components/Control.vue';
-
+import Controller from './components/Controller.vue';
+import Grid from './components/Grid.vue';
 export default {
   name: 'App',
   components: {
-    'app-control': Control,
+    'app-grid': Grid,
+    'app-controller': Controller,
   },
   data() {
     return {};
