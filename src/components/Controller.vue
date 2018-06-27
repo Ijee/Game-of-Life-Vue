@@ -7,70 +7,54 @@
             <a
               class="button"
               @click="send('slowDown')">
-              <i
-                class="fas fa-backward"
-              />
+              <i class="fas fa-backward"/>
             </a>
           </p>
           <p class="control">
             <a
               class="button"
-              @click="send('stepBackward')">
-              <i
-                class="fas fa-step-backward"
-              />
+              @click="send('lastStep')">
+              <i class="fas fa-step-backward"/>
             </a>
           </p>
           <p class="control">
             <a
+
+              :class="isRunning ? 'green' : 'red'"
               class="button"
+              title="play"
               @click="send('play')">
               <i
-                class="far fa-play-circle"
-              />
-            </a>
-          </p>
-          <p class="control">
-            <a
-              class="button"
-              @click="send('pause')">
-              <i class="far fa-pause-circle"/>
+                :class="isRunning ? 'fa-pause-circle' : 'fa-play-circle'"
+                class="far"/>
             </a>
           </p>
           <p class="control">
             <a
               class="button"
               @click="send('redoSession')">
-              <i
-                class="fas fa-redo"
-              />
+              <i class="fas fa-redo"/>
             </a>
           </p>
           <p class="control">
             <a
               class="button"
               @click="send('nextStep')">
-              <i
-                class="fas fa-step-forward"
-              />
+              <i class="fas fa-step-forward"/>
             </a>
           </p>
           <p class="control">
             <a
               class="button"
               @click="send('speedUp')">
-              <i
-                class="fas fa-forward"
-              />
+              <i class="fas fa-forward"/>
             </a>
           </p>
           <p class="control">
             <a
               class="button"
               @click="send('randomSeed')">
-              <i
-                class="fas fa-random"
-              />
+              <i class="fas fa-random"/>
               <b>Random Seed</b>
             </a>
           </p>
@@ -91,18 +75,19 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    isRunning: {
+      default: false,
+      type: Boolean,
+    },
+  },
   data() {
-    return {
-      globalSettings: {
-        speed: 1,
-      },
-    };
+    return {};
   },
   methods: {
     send: function(event) {
@@ -114,6 +99,13 @@ export default {
 
 <style scoped>
 .box {
-  padding: 0.3rem;
+  padding: 0;
+  margin: auto;
+}
+.green {
+  background-color: hsla(120, 77%, 26%, 0.6);
+}
+.red {
+  background-color: hsla(0, 67%, 31%, 0.6);
 }
 </style>

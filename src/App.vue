@@ -1,16 +1,16 @@
 <template>
   <div class="GOL">
-    <section class="section has-background-primary">
+    <section class="section primary-background">
       <div class="container">
         <h1 class="title">Game of Life</h1>
-        <h2 class="subtitle has-text-grey-dark">
-          Implementation of Conway's Game of Life built with vuejs 2 and bulma css framework.
+        <h2 class="subtitle">
+          Implementation of John Conway's Game of Life built with vuejs 2 and bulma css framework.
           Repository <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
         </h2>
       </div>
     </section>
     <hr class="hr">
-    <section class="section is-primary">
+    <section class="section is-primary content-background">
       <div class="container">
         <div class="columns">
           <div class="column box is-10 is-offset-1">
@@ -19,10 +19,10 @@
           </div>
         </div>
     </div></section>
-    <hr class="hr">
-    <footer class="footer has-background-primary">
+    <footer class="footer primary-background">
       <app-controller
-        @send="updateMessage($event)"/></footer>
+        :is-running="isRunning"
+        @send="delegate($event)"/></footer>
     <div
       :class="isModal ? 'is-active' : 'inactive'"
       class="modal">
@@ -54,8 +54,10 @@
 
 <script>
 // Imports
+import Vue from 'vue';
 import Controller from './components/Controller.vue';
 import Grid from './components/Grid.vue';
+import {setInterval, clearInterval} from 'timers';
 export default {
   name: 'App',
   components: {
@@ -64,14 +66,57 @@ export default {
   },
   data() {
     return {
-      message: 's',
+      message: '',
+      isRunning: false,
       isModal: false,
+      speed: 250,
+      intervalID: 0,
     };
   },
   created() {},
   methods: {
-    updateMessage(newMessage) {
+    delegate: function(event) {
+      if (event === 'play') {
+        this.isRunning = !this.isRunning;
+        this.restartInterval();
+      } else if (event === 'importSession') {
+        return;
+      } else if (event === 'exportSession') {
+        return;
+      } else if (event === 'slowDown') {
+        this.changeSpeed(50);
+        this.restartInterval();
+      } else if (event === 'speedUp') {
+        this.changeSpeed(-50);
+        this.restartInterval();
+      } else {
+        this.updateMessage(event);
+      }
+    },
+    updateMessage: function(newMessage) {
       this.message = newMessage;
+      Vue.nextTick(this.resetMessage);
+    },
+    resetMessage: function() {
+      this.message = '';
+    },
+    restartInterval: function() {
+      clearInterval(this.intervalID);
+      if (this.isRunning) {
+        this.intervalID = setInterval(
+          this.updateMessage,
+          this.speed,
+          'nextStep'
+        );
+      }
+    },
+    changeSpeed: function(speed) {
+      this.speed += speed;
+      if (this.speed < 100) {
+        this.speed = 100;
+      } else if (this.speed > 2500) {
+        this.speed = 2500;
+      }
     },
   },
 };
@@ -80,7 +125,7 @@ export default {
 <style lang="scss">
 html,
 body {
-  background-color: #fff;
+  background-color: #9da3a7;
   color: #000;
   font-family: "Dosis", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -92,24 +137,36 @@ body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #fff;
+}
+
+.subtitle {
+  color: #fff;
 }
 
 .GOL {
   height: 100%;
 }
 
+.primary-background {
+  background-color: #536076;
+}
+.content-background {
+  background-color: #9da3a7;
+}
 .footer {
   position: absolute;
+  border-top: 2px solid #414b5c;
   bottom: 0;
   padding: 1rem;
   width: 100%;
-  background-color: red;
 }
 
 .hr {
-  border-top: 1px solid #8c8b8b;
+  position: relative;
+  border-top: 2px solid #414b5c;
   margin: 0px;
+  bottom: 0;
 }
 
 h1,

@@ -12,11 +12,7 @@
         :x-pos="indexX"
         :y-pos="indexY"
       />
-
     </div>
-    <button
-      id="buton"
-      @click="randomSeed">Test</button>
   </div>
 </template>
 
@@ -34,14 +30,26 @@ export default {
   },
   data() {
     return {
-      width: 25,
-      height: 15,
+      width: 36,
+      height: 18,
       cells: 0,
       gridList: [],
-      initialList: [],
     };
   },
   computed: {},
+  watch: {
+    message: function(val) {
+      if (val === 'nextStep') {
+        this.update();
+      } else if (val === 'lastStep') {
+        return;
+      } else if (val === 'redoSession') {
+        this.reset();
+      } else if (val === 'randomSeed') {
+        this.randomSeed();
+      }
+    },
+  },
   created() {
     this.cellCalc();
   },
@@ -53,7 +61,6 @@ export default {
           this.gridList[i][j] = {isAlive: false};
         }
       }
-      this.initialList = this.gridList;
       this.cells = this.width * this.height;
     },
     log: function(e) {
@@ -66,7 +73,9 @@ export default {
       // this.gridList.splice(x, 1, row);
     },
     update: function() {
+      let tempArr = [];
       for (let i = 0; i < this.width; i++) {
+        tempArr[i] = [];
         for (let j = 0; j < this.height; j++) {
           let status = this.gridList[i][j].isAlive;
           let neighbours = this.getNeighbours(i, j);
@@ -95,7 +104,13 @@ export default {
           if (!status && neighbours == 3) {
             result = true;
           }
-          this.setCell(i, j, result);
+          tempArr[i][j] = result;
+        }
+      }
+      // set new gridList content
+      for (let i = 0; i < this.width; i++) {
+        for (let j = 0; j < this.height; j++) {
+          this.setCell(i, j, tempArr[i][j]);
         }
       }
     },
@@ -104,8 +119,14 @@ export default {
       if (posX <= this.width && posY <= this.height) {
         for (let offsetX = -1; offsetX < 2; offsetX++) {
           for (let offsetY = -1; offsetY < 2; offsetY++) {
+            let newX = posX + offsetX;
+            let newY = posY + offsetY;
             if (
               (offsetX != 0 || offsetY != 0) &&
+              newX >= 0 &&
+              newX < this.width &&
+              newY >= 0 &&
+              newY < this.height &&
               this.gridList[posX + offsetX][posY + offsetY].isAlive == true
             ) {
               neighbours++;
@@ -115,11 +136,12 @@ export default {
       }
       return neighbours;
     },
-    play: function() {
-      return;
-    },
     reset: function() {
-      this.gridList = this.initialList;
+      this.gridList.forEach((col) => {
+        col.forEach((cell) => {
+          cell.isAlive = false;
+        });
+      });
     },
     randomSeed: function() {
       for (let i = 0; i < this.width; i++) {

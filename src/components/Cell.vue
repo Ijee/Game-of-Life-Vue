@@ -13,10 +13,6 @@ export default {
       },
       type: Object,
     },
-    status: {
-      default: false,
-      type: Boolean,
-    },
     xPos: {
       default: -1,
       type: Number,
@@ -42,18 +38,18 @@ export default {
 
 <style>
 .cell {
-  width: 25px;
-  height: 25px;
-  border: 1px solid #455660;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #977263;
 
   font-size: 3.5em;
   font-family: "Gochi Hand", sans-serif;
 }
 
 .cell:hover {
-  background-color: grey;
+  background-color: #4b5369;
 }
 .alive {
-  background-color: #5a7280;
+  background-color: #2e3341;
 }
 </style>
