@@ -40,7 +40,7 @@ export default {
 .cell {
   width: 20px;
   height: 20px;
-  border: 1px solid #977263;
+  border: 1px solid #414b5c;
 
   font-size: 3.5em;
   font-family: "Gochi Hand", sans-serif;

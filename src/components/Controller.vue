@@ -6,6 +6,7 @@
           <p class="control">
             <a
               class="button"
+              title="slow down"
               @click="send('slowDown')">
               <i class="fas fa-backward"/>
             </a>
@@ -13,6 +14,7 @@
           <p class="control">
             <a
               class="button"
+              title="last step"
               @click="send('lastStep')">
               <i class="fas fa-step-backward"/>
             </a>
@@ -32,6 +34,7 @@
           <p class="control">
             <a
               class="button"
+              title="clear grid"
               @click="send('redoSession')">
               <i class="fas fa-redo"/>
             </a>
@@ -39,6 +42,7 @@
           <p class="control">
             <a
               class="button"
+              title="next step"
               @click="send('nextStep')">
               <i class="fas fa-step-forward"/>
             </a>
@@ -46,6 +50,7 @@
           <p class="control">
             <a
               class="button"
+              title="speed up"
               @click="send('speedUp')">
               <i class="fas fa-forward"/>
             </a>
@@ -79,6 +84,7 @@
 </template>
 
 <script>
+import tippy from 'tippy.js';
 export default {
   props: {
     isRunning: {
@@ -95,6 +101,14 @@ export default {
     },
   },
 };
+tippy('[title]', {
+  delay: 100,
+  arrow: true,
+  arrowType: 'round',
+  size: 'large',
+  duration: 500,
+  animation: 'scale',
+});
 </script>
 
 <style scoped>

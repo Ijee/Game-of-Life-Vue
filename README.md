@@ -1,10 +1,10 @@
-# game_of_life_vue2
+# Game of Life - Vue 2
 
-> game of life implementation with vuejs.
+> game of life implementation with vuejs, bulma and tippy.js.
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 

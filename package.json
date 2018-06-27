@@ -12,6 +12,7 @@
   "dependencies": {
     "bulma": "^0.7.1",
     "eslint": "^4.19.1",
+    "tippy.js": "^2.5.3",
     "vue": "^2.5.11"
   },
   "browserslist": [
