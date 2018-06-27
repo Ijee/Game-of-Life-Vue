@@ -1,26 +1,40 @@
 <template>
   <div
-    :class="isAlive ? 'alive' : 'dead'"
+    :class="isAlive.isAlive ? 'alive' : 'dead'"
     class="cell"
     @click="reborn()"/>
 </template>
 <script>
 export default {
   props: {
+    statusObj: {
+      default: function() {
+        return {isAlive: false};
+      },
+      type: Object,
+    },
     status: {
       default: false,
       type: Boolean,
     },
+    xPos: {
+      default: -1,
+      type: Number,
+    },
+    yPos: {
+      default: -1,
+      type: Number,
+    },
   },
   data() {
     return {
-      isAlive: this.status,
+      isAlive: this.statusObj,
     };
   },
   methods: {
     reborn: function() {
-      this.$emit('toggle');
-      this.isAlive = !this.isAlive;
+      this.isAlive.isAlive = !this.isAlive.isAlive;
+      this.$emit('updateStatus', this.xPos, this.yPos, this.isAlive);
     },
   },
 };

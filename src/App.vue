@@ -4,8 +4,8 @@
       <div class="container">
         <h1 class="title">Game of Life</h1>
         <h2 class="subtitle has-text-grey-dark">
-          Implementation of Conway's Game of Life built with vuejs 2 and bulma css framework. Repository
-          <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
+          Implementation of Conway's Game of Life built with vuejs 2 and bulma css framework.
+          Repository <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
         </h2>
       </div>
     </section>
@@ -14,16 +14,41 @@
       <div class="container">
         <div class="columns">
           <div class="column box is-10 is-offset-1">
-            <app-grid/>
+            <app-grid
+              :message="message"/>
           </div>
         </div>
     </div></section>
-
     <hr class="hr">
     <footer class="footer has-background-primary">
-
-      <app-controller/>
-    </footer>
+      <app-controller
+        @send="updateMessage($event)"/></footer>
+    <div
+      :class="isModal ? 'is-active' : 'inactive'"
+      class="modal">
+      <div class="modal-background"/>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Import</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isModal = false"/>
+        </header>
+        <section class="modal-card-body">
+          <textarea
+            class="textarea is-primary"
+            type="text"
+            placeholder="Paste here"/>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Import</button>
+          <button
+            class="button"
+            @click="isModal = false">Cancel</button>
+        </footer>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,7 +63,16 @@ export default {
     'app-controller': Controller,
   },
   data() {
-    return {};
+    return {
+      message: 's',
+      isModal: false,
+    };
+  },
+  created() {},
+  methods: {
+    updateMessage(newMessage) {
+      this.message = newMessage;
+    },
   },
 };
 </script>
