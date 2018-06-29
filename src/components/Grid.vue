@@ -24,7 +24,11 @@ export default {
   },
   props: {
     message: {
-      default: 'hallo',
+      default: '',
+      type: String,
+    },
+    importToken: {
+      default: '',
       type: String,
     },
   },
@@ -47,6 +51,10 @@ export default {
         this.reset();
       } else if (val === 'randomSeed') {
         this.randomSeed();
+      } else if (val === 'importSession') {
+        this.importSession();
+      } else if (val === 'exportSession') {
+        this.exportSession();
       }
     },
   },
@@ -121,6 +129,9 @@ export default {
           for (let offsetY = -1; offsetY < 2; offsetY++) {
             let newX = posX + offsetX;
             let newY = posY + offsetY;
+            // check if offset is:
+            // on current cell, out of bounds and if isAlive
+            // for cell true
             if (
               (offsetX != 0 || offsetY != 0) &&
               newX >= 0 &&
@@ -154,6 +165,29 @@ export default {
           }
         }
       }
+    },
+    importSession: function() {
+      this.reset();
+      let regex = /\[\d+,\d+\]/gm;
+      let tempArr = this.importToken.match(regex);
+      if (tempArr) {
+        tempArr.forEach((element) => {
+          element = element.substring(1, element.length - 1);
+          let xy = element.split(',');
+          this.setCell(xy[0], xy[1], true);
+        });
+      }
+    },
+    exportSession: function() {
+      let exportToken = '';
+      for (let i = 0; i < this.width; i++) {
+        for (let j = 0; j < this.height; j++) {
+          if (this.gridList[i][j].isAlive) {
+            exportToken += '[' + i + ',' + j + ']';
+          }
+        }
+      }
+      this.$emit('exportToken', exportToken);
     },
   },
 };

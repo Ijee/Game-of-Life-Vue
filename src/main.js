@@ -4,7 +4,7 @@ import 'bulma/css/bulma.css';
 
 window.Event = new Vue();
 
-const app = new Vue({
+new Vue({
   el: '#app',
   render: (h) => h(App),
 });

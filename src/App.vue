@@ -15,7 +15,9 @@
         <div class="columns">
           <div class="column box is-10 is-offset-1">
             <app-grid
-              :message="message"/>
+              :message="message"
+              :import-token="importToken"
+              @exportToken=""/>
           </div>
         </div>
     </div></section>
@@ -37,16 +39,24 @@
         </header>
         <section class="modal-card-body">
           <textarea
+            v-model="importToken"
             class="textarea is-primary"
             type="text"
             placeholder="Paste here"/>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Import</button>
+          <button
+            class="button is-success"
+            @click="importSession">Import</button>
           <button
             class="button"
             @click="isModal = false">Cancel</button>
-        </footer>
+          <div class="select">
+            <select>
+              <option>select</option>
+              <option>Train</option>
+            </select>
+        </div></footer>
       </div>
     </div>
   </div>
@@ -71,6 +81,7 @@ export default {
       isModal: false,
       speed: 250,
       intervalID: 0,
+      importToken: '',
     };
   },
   created() {},
@@ -80,7 +91,7 @@ export default {
         this.isRunning = !this.isRunning;
         this.restartInterval();
       } else if (event === 'importSession') {
-        return;
+        this.isModal = true;
       } else if (event === 'exportSession') {
         return;
       } else if (event === 'slowDown') {
@@ -117,6 +128,10 @@ export default {
       } else if (this.speed > 2500) {
         this.speed = 2500;
       }
+    },
+    importSession: function() {
+      this.updateMessage('importSession');
+      this.isModal = false;
     },
   },
 };
