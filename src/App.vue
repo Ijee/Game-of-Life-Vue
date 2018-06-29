@@ -2,7 +2,7 @@
   <div class="GOL">
     <section class="section primary-background">
       <div class="container">
-        <h1 class="title">Game of Life</h1>
+        <h1 class="title">GAME OF LIFE</h1>
         <h2 class="subtitle">
           Implementation of John Conway's Game of Life built with vuejs 2 and bulma css framework.
           Repository <a href="https://github.com/Ijee/Game-of-Life-Vue2">here</a>.
@@ -17,7 +17,34 @@
             <app-grid
               :message="message"
               :import-token="importToken"
-              @exportToken=""/>
+              @exportToken="exportSession($event)"/>
+          </div>
+        </div>
+        <div
+          v-if="isExport"
+          class="columns">
+          <div class="column is-6 is-offset-3">
+            <div class="notification">
+              <button
+                class="delete"
+                @click="isExport = false"/>
+              <div class="field has-addons">
+                <div class="control">
+                  <input
+                    v-model="exportToken"
+                    type="text"
+                    class="input is-info is-rounded"
+                    @focus="$event.target.select()">
+                </div>
+                <div class="control">
+                  <a
+                    class="button is-dark"
+                    @click="toClipboard">
+                    <i class="fas fa-paste"/>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </div></section>
@@ -26,7 +53,7 @@
         :is-running="isRunning"
         @send="delegate($event)"/></footer>
     <div
-      :class="isModal ? 'is-active' : 'inactive'"
+      :class="isImport ? 'is-active' : 'inactive'"
       class="modal">
       <div class="modal-background"/>
       <div class="modal-card">
@@ -35,7 +62,7 @@
           <button
             class="delete"
             aria-label="close"
-            @click="isModal = false"/>
+            @click="isImport = false"/>
         </header>
         <section class="modal-card-body">
           <textarea
@@ -50,12 +77,21 @@
             @click="importSession">Import</button>
           <button
             class="button"
-            @click="isModal = false">Cancel</button>
-          <div class="select">
-            <select>
-              <option>select</option>
-              <option>Train</option>
-            </select>
+            @click="isImport = false">Cancel</button>
+          <div class="field">
+            <p class="control has-icons-left">
+              <span class="select">
+                <select>
+                  <option selected>Scenario</option>
+                  <option>Train</option>
+                  <option>With options</option>
+                </select>
+              </span>
+              <span class="icon is-small is-left">
+                <i
+                  class="fas fa-list-ul"
+                  style="color: #000"/></i></span>
+            </p>
         </div></footer>
       </div>
     </div>
@@ -78,10 +114,12 @@ export default {
     return {
       message: '',
       isRunning: false,
-      isModal: false,
+      isImport: false,
+      isExport: false,
       speed: 250,
       intervalID: 0,
       importToken: '',
+      exportToken: '',
     };
   },
   created() {},
@@ -91,9 +129,9 @@ export default {
         this.isRunning = !this.isRunning;
         this.restartInterval();
       } else if (event === 'importSession') {
-        this.isModal = true;
+        this.isImport = true;
       } else if (event === 'exportSession') {
-        return;
+        this.updateMessage('exportSession');
       } else if (event === 'slowDown') {
         this.changeSpeed(50);
         this.restartInterval();
@@ -131,7 +169,15 @@ export default {
     },
     importSession: function() {
       this.updateMessage('importSession');
-      this.isModal = false;
+      this.isImport = false;
+    },
+    exportSession: function(exportToken) {
+      this.exportToken = exportToken;
+      console.log(2);
+      this.isExport = true;
+    },
+    toClipboard: function() {
+      this.isExport = false;
     },
   },
 };
@@ -140,7 +186,7 @@ export default {
 <style lang="scss">
 html,
 body {
-  background-color: #9da3a7;
+  background-color: #565656;
   color: #000;
   font-family: "Dosis", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -164,10 +210,10 @@ body {
 }
 
 .primary-background {
-  background-color: #536076;
+  background-color: #76323f;
 }
 .content-background {
-  background-color: #9da3a7;
+  background-color: #565656;
 }
 .footer {
   position: absolute;
