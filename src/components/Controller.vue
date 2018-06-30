@@ -4,15 +4,16 @@
       <div class="box">
         <div class="field has-addons has-addons-centered">
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               title="slow down"
               @click="send('slowDown')">
               <i class="fas fa-backward"/>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               :class="isRunning ? 'green' : 'red'"
               class="button"
               title="play"
@@ -20,54 +21,53 @@
               <i
                 :class="isRunning ? 'fa-pause-circle' : 'fa-play-circle'"
                 class="far"/>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               title="clear grid"
               @click="send('redoSession')">
               <i class="fas fa-redo"/>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               title="next step"
               @click="send('nextStep')">
               <i class="fas fa-step-forward"/>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               title="speed up"
               @click="send('speedUp')">
               <i class="fas fa-forward"/>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('randomSeed')">
               <i class="fas fa-random"/>
               <b>Random Seed</b>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('importSession')">
               <b>Import</b>
-            </a>
-          </p>
+          </button></p>
           <p class="control">
-            <a
+            <button
+              :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('exportSession')">
               <b>Export</b>
-            </a>
-          </p>
+          </button></p>
         </div>
       </div>
     </div>
@@ -81,6 +81,10 @@ export default {
     isRunning: {
       default: false,
       type: Boolean,
+    },
+    mainComponent: {
+      default: 'gamePage',
+      type: String,
     },
   },
   data() {

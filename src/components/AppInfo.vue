@@ -23,7 +23,6 @@
         a live cell, as if by <strong>reproduction</strong></li>
       </ul>
     </div>
-
   </div>
 </template>
 

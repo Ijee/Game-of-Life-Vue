@@ -69,9 +69,6 @@ export default {
       }
       this.cells = this.width * this.height;
     },
-    log: function(e) {
-      console.log(e);
-    },
     setCell: function(x, y, bool) {
       this.gridList[x][y].isAlive = bool;
       // let row = this.gridList[x];

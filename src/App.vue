@@ -31,7 +31,7 @@
               <div class="navbar-end">
                 <a
                   class="navbar-item is-active"
-                  @click="swapComponent('appInfo')">
+                  @click="swapComponent('gamePage')">
                   <span class="icon">
                     <i class="fas fa-gamepad"/>
                   </span>
@@ -47,7 +47,7 @@
                 </a>
                 <span class="navbar-item">
                   <a
-                    class="button is-info is-inverted"
+                    class="button is-info"
                     href="https://github.com/Ijee/Game-of-Life-Vue2"
                     target="_blank">
                     <span class="icon">
@@ -71,7 +71,7 @@
                 name="fade">
                 <app-info v-if="mainComponent == 'infoPage'"/>
                 <app-grid
-                  v-if="mainComponent == 'appInfo'"
+                  v-if="mainComponent == 'gamePage'"
                   :message="message"
                   :import-token="importToken"
                   @exportToken="exportSession($event)" />
@@ -120,6 +120,7 @@
             <div class="column is-11 is-centered">
               <app-controller
                 :is-running="isRunning"
+                :main-component="mainComponent"
                 @send="delegate($event)"/>
             </div>
           </div>
@@ -160,8 +161,9 @@
                   <span class="select">
                     <select>
                       <option selected>Scenario</option>
-                      <option>Train</option>
-                      <option>With options</option>
+                      <option>Gosper glider gun</option>
+                      <option>Glider</option>
+                      <option>Multiple patterns</option>
                     </select>
                   </span>
                   <span class="icon is-small is-left">
@@ -255,6 +257,16 @@ export default {
       this.updateMessage('importSession');
       this.isImport = false;
     },
+    importScenario: function(scenario) {
+      if (scenario === 'gosper') {
+        this.importToken = '';
+      } else if (scenario === 'glider') {
+        this.importToken = '';
+      } else if (scenario === 'multiple') {
+        this.importToken = '';
+      }
+      this.updateMessage('importSession');
+    },
     exportSession: function(exportToken) {
       this.exportToken = exportToken;
       this.isExport = true;
@@ -301,8 +313,6 @@ body {
   color: #fff;
 }
 
-.GOL {
-}
 .hero-body {
   align-items: stretch !important;
 }
