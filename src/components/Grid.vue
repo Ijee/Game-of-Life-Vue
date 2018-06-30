@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      width: 36,
-      height: 18,
+      width: 38,
+      height: 22,
       cells: 0,
       gridList: [],
     };

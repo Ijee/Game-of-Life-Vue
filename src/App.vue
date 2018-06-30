@@ -173,10 +173,12 @@ export default {
     },
     exportSession: function(exportToken) {
       this.exportToken = exportToken;
-      console.log(2);
       this.isExport = true;
     },
     toClipboard: function() {
+      let copyString = this.exportToken;
+      copyString.select();
+      document.execCommand('copy');
       this.isExport = false;
     },
   },
