@@ -50,7 +50,7 @@
       <div class="hero-body">
         <div class="container">
           <div class="columns">
-            <div class="column box is-11 is-centered">
+            <div class="column box is-12 is-centered">
               <app-grid
                 :message="message"
                 :import-token="importToken"
