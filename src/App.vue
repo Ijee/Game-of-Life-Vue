@@ -66,43 +66,51 @@
         <div class="container">
           <div class="columns">
             <div class="column box is-12">
-              <app-info v-if="mainComponent == 'infoPage'"/>
-              <app-grid
-                v-if="mainComponent == 'appInfo'"
-                :message="message"
-                :import-token="importToken"
-                @exportToken="exportSession($event)" />
+              <transition
+                mode="out-in"
+                name="fade">
+                <app-info v-if="mainComponent == 'infoPage'"/>
+                <app-grid
+                  v-if="mainComponent == 'appInfo'"
+                  :message="message"
+                  :import-token="importToken"
+                  @exportToken="exportSession($event)" />
+              </transition>
             </div>
           </div>
-          <div
-            v-if="isExport"
-            class="columns">
-            <div class="column is-6 is-offset-3">
-              <div class="notification">
-                <h6 class="title is-6">Export</h6>
-                <button
-                  class="delete"
-                  @click="isExport = false" />
-                <div class="field has-addons">
-                  <div class="control is-expanded">
-                    <input
-                      id="copystring"
-                      v-model="exportToken"
-                      type="text"
-                      class="input is-info is-rounded"
-                      @focus="$event.target.select()">
-                  </div>
-                  <div class="control">
-                    <a
-                      class="button is-dark"
-                      @click="toClipboard">
-                      <i class="fas fa-paste" />
-                    </a>
+          <transition
+            mode="out-in"
+            name="fade">
+            <div
+              v-if="isExport"
+              class="columns">
+              <div class="column is-6 is-offset-3">
+                <div class="notification">
+                  <h6 class="title is-6">Export</h6>
+                  <button
+                    class="delete"
+                    @click="isExport = false" />
+                  <div class="field has-addons">
+                    <div class="control is-expanded">
+                      <input
+                        id="copystring"
+                        v-model="exportToken"
+                        type="text"
+                        class="input is-info is-rounded"
+                        @focus="$event.target.select()">
+                    </div>
+                    <div class="control">
+                      <a
+                        class="button is-dark"
+                        @click="toClipboard">
+                        <i class="fas fa-paste" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </transition>
         </div>
       </div>
       <!-- Hero footer: will stick at the bottom -->
@@ -117,50 +125,55 @@
           </div>
         </div>
       </footer>
-      <div
-        :class="isImport ? 'is-active' : 'inactive'"
-        class="modal">
-        <div class="modal-background" />
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Import</p>
-            <button
-              class="delete"
-              aria-label="close"
-              @click="isImport = false" />
-          </header>
-          <section class="modal-card-body">
-            <textarea
-              v-model="importToken"
-              class="textarea is-primary"
-              type="text"
-              placeholder="Paste here" />
-          </section>
-          <footer class="modal-card-foot">
-            <button
-              class="button is-success"
-              @click="importSession">Import</button>
-            <button
-              class="button"
-              @click="isImport = false">Cancel</button>
-            <div class="field">
-              <p class="control has-icons-left">
-                <span class="select">
-                  <select>
-                    <option selected>Scenario</option>
-                    <option>Train</option>
-                    <option>With options</option>
-                  </select>
-                </span>
-                <span class="icon is-small is-left">
-                  <i
-                    class="fas fa-list-ul"
-                    style="color: #000" />
-                </span>
-              </p>
-            </div>
-        </footer></div>
-      </div>
+      <transition
+        mode="out-in"
+        name="fade">
+        <div
+          v-if="isImport"
+          :class="isImport ? 'is-active' : 'inactive'"
+          class="modal">
+          <div class="modal-background" />
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Import</p>
+              <button
+                class="delete"
+                aria-label="close"
+                @click="isImport = false" />
+            </header>
+            <section class="modal-card-body">
+              <textarea
+                v-model="importToken"
+                class="textarea is-primary"
+                type="text"
+                placeholder="Paste here" />
+            </section>
+            <footer class="modal-card-foot">
+              <button
+                class="button is-success"
+                @click="importSession">Import</button>
+              <button
+                class="button"
+                @click="isImport = false">Cancel</button>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <span class="select">
+                    <select>
+                      <option selected>Scenario</option>
+                      <option>Train</option>
+                      <option>With options</option>
+                    </select>
+                  </span>
+                  <span class="icon is-small is-left">
+                    <i
+                      class="fas fa-list-ul"
+                      style="color: #000" />
+                  </span>
+                </p>
+              </div>
+          </footer></div>
+        </div>
+      </transition>
     </section>
   </div>
 </template>
@@ -304,23 +317,12 @@ body {
   margin: 0px;
   bottom: 0;
 }
-
-h1,
-h2 {
-  font-weight: normal;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.35s;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #000;
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

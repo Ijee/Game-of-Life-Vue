@@ -8,16 +8,16 @@
     Created in </br>
     <h5 class="title is-5">The rules:</h5>
     <div class="content">
-      <ol>
+      <ul>
         <li> Any live cell with fewer than two live neighbours dies,
-        as if by under <strong>population</strong></li>
+        as if by <strong>under population</strong></li>
         <li>Any live cell with two or three neighbours lives on
         to the next generation</li>
         <li>Any live cell with more than three live neighbours dies,
         as if by <strong>overpopulation</strong></li>
         <li>Any dead cell with exactly three live neighbours becomes
         a live cell, as if by <strong>reproduction</strong></li>
-      </ol>
+      </ul>
     </div>
 
   </div>
