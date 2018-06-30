@@ -195,6 +195,7 @@ export default {
 
 <style>
 .grid {
+  border: #525050 solid;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   overflow: hidden;

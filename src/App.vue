@@ -6,7 +6,10 @@
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
-              <a class="navbar-item">
+              <a
+                class="navbar-item"
+                style="color: #fff">
+                <i class="fas fa-heartbeat"/>
                 GAME OF LIFE
               </a>
               <span
@@ -148,11 +151,13 @@
 import Vue from 'vue';
 import Controller from './components/Controller.vue';
 import Grid from './components/Grid.vue';
+import GameInfo from './components/GameInfo.vue';
 import {setInterval, clearInterval} from 'timers';
 export default {
   name: 'App',
   components: {
     'app-grid': Grid,
+    'game-info': GameInfo,
     'app-controller': Controller,
   },
   data() {
@@ -234,7 +239,14 @@ export default {
 <style lang="scss">
 html,
 body {
-  background-color: #565656;
+  background-image: linear-gradient(
+    to right top,
+    #ffd464,
+    #ff9766,
+    #e4667e,
+    #a34d91,
+    #42448c
+  );
   color: #000;
   font-family: "Dosis", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -255,19 +267,9 @@ body {
 .GOL {
 }
 
-.primary-background {
-  background-color: #98dafc;
-}
-.content-background {
-  background-color: #565656;
-}
 .footer {
-  position: absolute;
-  background-color: #312c32;
-  border-top: 2px solid #414b5c;
-  bottom: 0;
   padding: 1rem;
-  width: 100%;
+  background-color: transparent;
 }
 
 .hr {
