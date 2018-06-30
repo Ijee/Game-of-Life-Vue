@@ -5,7 +5,11 @@
     vuejs 2, bulma and Fontawesome. </h2>
     <hr>
     <h5 class="title is-5">About the game:</h5>
-    Created in </br>
+    Created in 1970, John Horton Conway created the game of life also known simply
+    as 'Life' which is an automated game based on 4 rules that determine the status
+    of a cell inside the grid. A cell can either be 'alive' or 'dead'. Every turn (tick)
+    rules get applied to all cells that are currently alive.
+    Further Information can be found <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">here</a>.
     <h5 class="title is-5">The rules:</h5>
     <div class="content">
       <ul>
@@ -34,6 +38,9 @@ export default {
 </script>
 
 <style>
+.subtitle {
+  color: grey;
+}
 hr {
   border: 1px solid #000;
 }
