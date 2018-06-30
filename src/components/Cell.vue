@@ -40,16 +40,18 @@ export default {
 .cell {
   width: 20px;
   height: 20px;
-  border: 1px solid #414b5c;
+  border: 1px solid #64706c;
 
   font-size: 3.5em;
   font-family: "Gochi Hand", sans-serif;
 }
-
+.cell {
+  background-color: #f6f1ed;
+}
 .cell:hover {
-  background-color: #4b5369;
+  background-color: #ce7878;
 }
 .alive {
-  background-color: #2e3341;
+  background-color: #b56969;
 }
 </style>

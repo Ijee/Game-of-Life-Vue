@@ -13,15 +13,6 @@
           </p>
           <p class="control">
             <a
-              class="button"
-              title="last step"
-              @click="send('lastStep')">
-              <i class="fas fa-step-backward"/>
-            </a>
-          </p>
-          <p class="control">
-            <a
-
               :class="isRunning ? 'green' : 'red'"
               class="button"
               title="play"

@@ -9,8 +9,10 @@
               <a
                 class="navbar-item"
                 style="color: #fff">
-                <i class="fas fa-heartbeat"/>
-                GAME OF LIFE
+                <span class="icon">
+                  <i class="fas fa-heartbeat"/>
+                </span>
+                <span>GAME OF LIFE</span>
               </a>
               <span
                 :class="{'is-active': isNavbar}"
@@ -27,14 +29,27 @@
               :class="{ 'is-active': isNavbar }"
               class="navbar-menu">
               <div class="navbar-end">
-                <a class="navbar-item is-active">
-                  Info
+                <a
+                  class="navbar-item is-active"
+                  @click="swapComponent('appInfo')">
+                  <span class="icon">
+                    <i class="fas fa-gamepad"/>
+                  </span>
+                  <span>GAME</span>
                 </a>
-                <a class="navbar-item">
-                  Game
+                <a
+                  class="navbar-item"
+                  @click="swapComponent('infoPage')">
+                  <span class="icon">
+                    <i class="fas fa-info"/>
+                  </span>
+                  <span>INFO</span>
                 </a>
                 <span class="navbar-item">
-                  <a class="button is-info is-inverted">
+                  <a
+                    class="button is-info is-inverted"
+                    href="https://github.com/Ijee/Game-of-Life-Vue2"
+                    target="_blank">
                     <span class="icon">
                       <i class="fab fa-github"/>
                     </span>
@@ -46,12 +61,14 @@
           </div>
         </nav>
       </div>
-      <!-- Hero content: will be in the middle -->
+      <!-- Hero content: wil l be in the middle -->
       <div class="hero-body">
         <div class="container">
           <div class="columns">
-            <div class="column box is-12 is-centered">
+            <div class="column box is-12">
+              <app-info v-if="mainComponent == 'infoPage'"/>
               <app-grid
+                v-if="mainComponent == 'appInfo'"
                 :message="message"
                 :import-token="importToken"
                 @exportToken="exportSession($event)" />
@@ -62,12 +79,14 @@
             class="columns">
             <div class="column is-6 is-offset-3">
               <div class="notification">
+                <h6 class="title is-6">Export</h6>
                 <button
                   class="delete"
                   @click="isExport = false" />
                 <div class="field has-addons">
-                  <div class="control">
+                  <div class="control is-expanded">
                     <input
+                      id="copystring"
                       v-model="exportToken"
                       type="text"
                       class="input is-info is-rounded"
@@ -93,7 +112,7 @@
             <div class="column is-11 is-centered">
               <app-controller
                 :is-running="isRunning"
-                @send="delegate($event)" />
+                @send="delegate($event)"/>
             </div>
           </div>
         </div>
@@ -136,7 +155,7 @@
                 <span class="icon is-small is-left">
                   <i
                     class="fas fa-list-ul"
-                    style="color: #000" /></i>
+                    style="color: #000" />
                 </span>
               </p>
             </div>
@@ -151,13 +170,13 @@
 import Vue from 'vue';
 import Controller from './components/Controller.vue';
 import Grid from './components/Grid.vue';
-import GameInfo from './components/GameInfo.vue';
+import AppInfo from './components/AppInfo.vue';
 import {setInterval, clearInterval} from 'timers';
 export default {
   name: 'App',
   components: {
     'app-grid': Grid,
-    'game-info': GameInfo,
+    'app-info': AppInfo,
     'app-controller': Controller,
   },
   data() {
@@ -167,7 +186,8 @@ export default {
       isNavbar: false,
       isImport: false,
       isExport: false,
-      speed: 250,
+      mainComponent: 'appInfo',
+      speed: 500,
       intervalID: 0,
       importToken: '',
       exportToken: '',
@@ -228,9 +248,13 @@ export default {
     },
     toClipboard: function() {
       this.isExport = false;
-      let copyString = this.exportToken;
+      let copyString = document.querySelector('#copystring');
+      copyString.setAttribute('type', 'text');
       copyString.select();
       document.execCommand('copy');
+    },
+    swapComponent: function(component) {
+      this.mainComponent = component;
     },
   },
 };
@@ -266,7 +290,9 @@ body {
 
 .GOL {
 }
-
+.hero-body {
+  align-items: stretch !important;
+}
 .footer {
   padding: 1rem;
   background-color: transparent;

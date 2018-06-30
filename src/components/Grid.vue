@@ -45,8 +45,6 @@ export default {
     message: function(val) {
       if (val === 'nextStep') {
         this.update();
-      } else if (val === 'lastStep') {
-        return;
       } else if (val === 'redoSession') {
         this.reset();
       } else if (val === 'randomSeed') {
@@ -195,7 +193,7 @@ export default {
 
 <style>
 .grid {
-  border: #525050 solid;
+  border: #141429 solid;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   overflow: hidden;
