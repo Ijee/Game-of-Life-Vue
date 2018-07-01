@@ -12,7 +12,7 @@
     Further Information can be found <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">here</a>.
     <h5 class="title is-5">The rules:</h5>
     <div class="content">
-      <ul>
+      <ol>
         <li> Any live cell with fewer than two live neighbours dies,
         as if by <strong>under population</strong></li>
         <li>Any live cell with two or three neighbours lives on
@@ -21,7 +21,7 @@
         as if by <strong>overpopulation</strong></li>
         <li>Any dead cell with exactly three live neighbours becomes
         a live cell, as if by <strong>reproduction</strong></li>
-      </ul>
+      </ol>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     return {};
   },
   created() {},
-  methods: {}
+  methods: {},
 };
 </script>
 

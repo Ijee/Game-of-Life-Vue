@@ -30,7 +30,7 @@
               class="navbar-menu">
               <div class="navbar-end">
                 <a
-                  class="navbar-item is-active"
+                  class="navbar-item"
                   @click="swapComponent('gamePage')">
                   <span class="icon">
                     <i class="fas fa-gamepad"/>
@@ -201,7 +201,7 @@ export default {
       isNavbar: false,
       isImport: false,
       isExport: false,
-      mainComponent: 'appInfo',
+      mainComponent: 'gamePage',
       speed: 500,
       intervalID: 0,
       importToken: '',
@@ -309,16 +309,16 @@ body {
   color: #fff;
 }
 
-.subtitle {
-  color: #fff;
-}
-
 .hero-body {
   align-items: stretch !important;
 }
 .footer {
   padding: 1rem;
   background-color: transparent;
+}
+
+.navbar-item {
+  color: #ff9766;
 }
 
 .hr {

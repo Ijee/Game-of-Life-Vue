@@ -75,6 +75,7 @@ export default {
       // row.splice(y, 1, {isAlive: true});
       // this.gridList.splice(x, 1, row);
     },
+
     update: function() {
       let tempArr = [];
       for (let i = 0; i < this.width; i++) {
@@ -117,6 +118,7 @@ export default {
         }
       }
     },
+
     getNeighbours: function(posX, posY) {
       let neighbours = 0;
       if (posX <= this.width && posY <= this.height) {
@@ -142,6 +144,10 @@ export default {
       }
       return neighbours;
     },
+    /**
+     * Resets all gridList cells back to the
+     * start value.
+     */
     reset: function() {
       this.gridList.forEach((col) => {
         col.forEach((cell) => {
@@ -149,6 +155,9 @@ export default {
         });
       });
     },
+    /**
+     * Populates and overwrites gridList with cells.
+     */
     randomSeed: function() {
       for (let i = 0; i < this.width; i++) {
         for (let j = 0; j < this.height; j++) {
@@ -161,6 +170,14 @@ export default {
         }
       }
     },
+    /**
+     * Resets and then imports new cells into the gridList
+     * based on the importToken prop that gets passed down
+     * App.vue.
+     * The importToken is a string and its syntax looks
+     * like this:
+     * '[xPos,yPos],[xPos,yPos]...'.
+     */
     importSession: function() {
       this.reset();
       let regex = /\[\d+,\d+\]/gm;
@@ -173,6 +190,10 @@ export default {
         });
       }
     },
+    /**
+     * Uses gridList to create an exportToken and
+     * emits it up to App.vue for the user to copy.
+     */
     exportSession: function() {
       let exportToken = '';
       for (let i = 0; i < this.width; i++) {
