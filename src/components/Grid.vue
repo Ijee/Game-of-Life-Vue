@@ -223,6 +223,7 @@ export default {
     /**
      * Uses gridList to create an exportToken and
      * emits it up to App.vue for the user to copy.
+     * Same format as in importToken().
      */
     exportSession: function() {
       let exportToken = '';
@@ -246,7 +247,6 @@ export default {
   width: -webkit-fit-content;
   overflow: hidden;
   margin: 0 auto;
-  background-color: #eee;
   color: #fff;
 }
 .col {

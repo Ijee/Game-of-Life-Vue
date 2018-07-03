@@ -69,12 +69,14 @@
               <transition
                 mode="out-in"
                 name="fade">
-                <app-info v-if="mainComponent == 'infoPage'"/>
-                <app-grid
-                  v-if="mainComponent == 'gamePage'"
-                  :message="message"
-                  :import-token="importToken"
-                  @exportToken="exportSession($event)" />
+                <keep-alive>
+                  <app-grid
+                    v-if="mainComponent == 'gamePage'"
+                    :message="message"
+                    :import-token="importToken"
+                    @exportToken="exportSession($event)" />
+                  <app-info v-if="mainComponent == 'infoPage'"/>
+                </keep-alive>
               </transition>
             </div>
           </div>
@@ -88,9 +90,7 @@
               <div class="column is-6 is-offset-3">
                 <div class="notification">
                   <h6 class="title is-6">
-                    <span class="icon">
-                      <i class="far fa-save"/>
-                    </span>
+                    <i class="far fa-save"/>
                     Export
                   </h6>
                   <button
@@ -394,7 +394,7 @@ body {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.35s;
+  transition: opacity 0.35s linear;
 }
 .fade-enter,
 .fade-leave-active {

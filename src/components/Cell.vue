@@ -41,7 +41,6 @@ export default {
   width: 20px;
   height: 20px;
   border: 1px solid #64706c;
-  background-color: #f6f1ed;
   position: relative;
   overflow: hidden;
 }
@@ -51,6 +50,6 @@ export default {
 }
 
 .alive {
-  background-color: #ac4040;
+  background-color: #bb4747;
 }
 </style>
