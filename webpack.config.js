@@ -10,8 +10,9 @@ module.exports = {
     filename: 'index_build.js',
   },
   plugins: [
-    new HtmlWebpackPlugin(
+    new HtmlWebpackPlugin({
       title: 'Game of Life - Vue',
+    }
     ),
   ],
   module: {
