@@ -7,11 +7,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'index_build.js',
+    filename: 'build.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Game of Life - Vue',
+      hash: true,
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
     }
     ),
   ],
