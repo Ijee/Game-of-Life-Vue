@@ -1,7 +1,7 @@
 <template>
   <div class="GOL">
     <section class="hero primary-background is-fullheight">
-      <!-- Hero head: will stick at the top -->
+      <!-- Bulma - Hero head -->
       <div class="hero-head">
         <nav class="navbar">
           <div class="container">
@@ -61,7 +61,7 @@
           </div>
         </nav>
       </div>
-      <!-- Hero content: wil l be in the middle -->
+      <!-- Bulma - Hero content -->
       <div class="hero-body">
         <div class="container">
           <div class="columns">
@@ -78,6 +78,7 @@
               </transition>
             </div>
           </div>
+          <!-- Bulma - Notification -->
           <transition
             mode="out-in"
             name="fade">
@@ -86,7 +87,12 @@
               class="columns">
               <div class="column is-6 is-offset-3">
                 <div class="notification">
-                  <h6 class="title is-6">Export</h6>
+                  <h6 class="title is-6">
+                    <span class="icon">
+                      <i class="far fa-save"/>
+                    </span>
+                    Export
+                  </h6>
                   <button
                     class="delete"
                     @click="isExport = false" />
@@ -113,7 +119,7 @@
           </transition>
         </div>
       </div>
-      <!-- Hero footer: will stick at the bottom -->
+      <!-- Bulma - Hero footer -->
       <footer class="footer">
         <div class="container">
           <div class="columns">
@@ -126,6 +132,7 @@
           </div>
         </div>
       </footer>
+      <!-- Bulma - Modal -->
       <transition
         mode="out-in"
         name="fade">
@@ -136,7 +143,12 @@
           <div class="modal-background" />
           <div class="modal-card">
             <header class="modal-card-head">
-              <p class="modal-card-title">Import</p>
+              <p class="modal-card-title">
+                <span class="icon">
+                  <i class="far fa-edit"/>
+                </span>
+                <b>Import</b>
+              </p>
               <button
                 class="delete"
                 aria-label="close"
@@ -210,6 +222,13 @@ export default {
   },
   created() {},
   methods: {
+    /**
+     * Gets called whenever a button is pressed
+     * from the Controller component and delegates the
+     * appropriate action based on param.
+     *
+     * @param {string} event - the event
+     */
     delegate: function(event) {
       if (event === 'play') {
         this.isRunning = !this.isRunning;
@@ -219,22 +238,37 @@ export default {
       } else if (event === 'exportSession') {
         this.updateMessage('exportSession');
       } else if (event === 'slowDown') {
-        this.changeSpeed(50);
+        this.changeSpeed(100);
         this.restartInterval();
       } else if (event === 'speedUp') {
-        this.changeSpeed(-50);
+        this.changeSpeed(-100);
         this.restartInterval();
       } else {
         this.updateMessage(event);
       }
     },
+    /**
+     * Updates  message  that gets passed
+     * down to the grid component as a prop and
+     * then resets the message on the next tick.
+     *
+     * @param {string} newMessage - the new message to be set
+     */
     updateMessage: function(newMessage) {
       this.message = newMessage;
       Vue.nextTick(this.resetMessage);
     },
+    /**
+     * Resets the current message to an
+     * empty string.
+     */
     resetMessage: function() {
       this.message = '';
     },
+    /**
+     * Restarts the current interval that
+     * is used to call the updateMessage method.
+     */
     restartInterval: function() {
       clearInterval(this.intervalID);
       if (this.isRunning) {
@@ -245,6 +279,12 @@ export default {
         );
       }
     },
+    /**
+     * Changes the current speed for
+     * the game.
+     *
+     * @param {number} speed - the new speed
+     */
     changeSpeed: function(speed) {
       this.speed += speed;
       if (this.speed < 100) {
@@ -253,10 +293,19 @@ export default {
         this.speed = 2500;
       }
     },
+    /**
+     * Sets the message for one tick
+     * as 'importSession'.
+     */
     importSession: function() {
       this.updateMessage('importSession');
       this.isImport = false;
     },
+    /**
+     * Changes the importToken based on param.
+     *
+     * @param {string} scenario - the scenario
+     */
     importScenario: function(scenario) {
       if (scenario === 'gosper') {
         this.importToken = '';
@@ -267,10 +316,20 @@ export default {
       }
       this.updateMessage('importSession');
     },
+    /**
+     * Changes the exportToken based on param.
+     *
+     * @param {string} exportToken - the exportToken
+     */
     exportSession: function(exportToken) {
       this.exportToken = exportToken;
       this.isExport = true;
     },
+    /**
+     * Copies the text in the #copystring input
+     * to the users clipboard. May not work on
+     * some clients
+     */
     toClipboard: function() {
       this.isExport = false;
       let copyString = document.querySelector('#copystring');
@@ -278,6 +337,12 @@ export default {
       copyString.select();
       document.execCommand('copy');
     },
+    /**
+     * Swaps out the current mainCompoment that
+     * is seen on the screen.
+     *
+     * @param {string} component - the new component
+     */
     swapComponent: function(component) {
       this.mainComponent = component;
     },

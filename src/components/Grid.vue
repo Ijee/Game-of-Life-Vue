@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      width: 36,
+      width: 46,
       height: 20,
       cells: 0,
       gridList: [],
@@ -42,6 +42,13 @@ export default {
   },
   computed: {},
   watch: {
+    /**
+     * Watches for changes in the message prop
+     * that gets passed down from the App component
+     * and then handles the input on a specific tick.
+     *
+     * @param {string} val - the value
+     */
     message: function(val) {
       if (val === 'nextStep') {
         this.update();
@@ -60,6 +67,10 @@ export default {
     this.cellCalc();
   },
   methods: {
+    /**
+     * Creates a 2D-Array during runtime for
+     * the website to use for most operations.
+     */
     cellCalc: function() {
       for (let i = 0; i < this.width; i++) {
         this.gridList[i] = [];
@@ -69,13 +80,25 @@ export default {
       }
       this.cells = this.width * this.height;
     },
+    /**
+     * Changes the 'isAlive' object property
+     * of a specific cell to the one requested
+     * in the param.
+     *
+     * @param {number} x - the x position
+     * @param {number} y - the y position
+     * @param {boolean} bool - the new boolean
+     */
     setCell: function(x, y, bool) {
       this.gridList[x][y].isAlive = bool;
       // let row = this.gridList[x];
       // row.splice(y, 1, {isAlive: true});
       // this.gridList.splice(x, 1, row);
     },
-
+    /**
+     * The main function that updates the grid
+     * every tick based on the game of life rules.
+     */
     update: function() {
       let tempArr = [];
       for (let i = 0; i < this.width; i++) {
@@ -118,7 +141,14 @@ export default {
         }
       }
     },
-
+    /**
+     * Returns the amount of neighbours for
+     * a specific cell on the grid.
+     *
+     * @param {number} posX - the x position
+     * @param {number} posY - the Y position
+     * @return {number} neighbours - amount of neighbours
+     */
     getNeighbours: function(posX, posY) {
       let neighbours = 0;
       if (posX <= this.width && posY <= this.height) {

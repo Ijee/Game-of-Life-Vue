@@ -51,14 +51,19 @@
               :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('randomSeed')">
-              <i class="fas fa-random"/>
-              <b>Random Seed</b>
+              <span class="icon">
+                <i class="fas fa-random"/>
+              </span>
+              <b>Random</b>
           </button></p>
           <p class="control">
             <button
               :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('importSession')">
+              <span class="icon">
+                <i class="far fa-edit"/>
+              </span>
               <b>Import</b>
           </button></p>
           <p class="control">
@@ -66,6 +71,9 @@
               :disabled="mainComponent !== 'gamePage'"
               class="button"
               @click="send('exportSession')">
+              <span class="icon">
+                <i class="far fa-save"/>
+              </span>
               <b>Export</b>
           </button></p>
         </div>
@@ -75,7 +83,6 @@
 </template>
 
 <script>
-import tippy from 'tippy.js';
 export default {
   props: {
     isRunning: {
@@ -91,6 +98,12 @@ export default {
     return {};
   },
   methods: {
+    /**
+     * emits the action that is requested
+     * by the client up to the App component.
+     *
+     * @param {string} event - the event
+     */
     send: function(event) {
       this.$emit('send', event);
     },

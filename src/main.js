@@ -6,5 +6,6 @@ window.Event = new Vue();
 
 new Vue({
   el: '#app',
+  // starting point for Vue.
   render: (h) => h(App),
 });
