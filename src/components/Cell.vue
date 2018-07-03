@@ -47,10 +47,10 @@ export default {
 }
 
 .cell:hover {
-  background-color: #ce7878;
+  background-color: #f85858;
 }
 
 .alive {
-  background-color: #b56969;
+  background-color: #ac4040;
 }
 </style>
