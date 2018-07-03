@@ -5,7 +5,7 @@
 
 ## Screenshot
 
-![Vue 2 - Game of Life Promot](https://i.imgur.com/GU13S.png "Promo")
+![Vue 2 - Game of Life Promot](https://i.imgur.com/gdGU13S.png "Promo")
 
 ## Live Demo - Github Pages
 
