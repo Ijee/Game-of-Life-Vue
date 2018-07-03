@@ -1,6 +1,5 @@
 let path = require('path');
 let webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -9,16 +8,6 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js',
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Game of Life - Vue',
-      hash: true,
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true,
-    }
-    ),
-  ],
   module: {
     rules: [
       {

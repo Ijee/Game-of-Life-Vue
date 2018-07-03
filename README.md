@@ -21,7 +21,7 @@ npm install
 npm run dev
 
 # build for production with minification
-npm run prod
+npm run build
 ```
 
 ## License:
