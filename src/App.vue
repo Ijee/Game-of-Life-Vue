@@ -65,7 +65,7 @@
       <div class="hero-body">
         <div class="container">
           <div class="columns">
-            <div class="column box">
+            <div class="kapsel column is-fullwidth box">
               <transition
                 mode="out-in"
                 name="fade">
@@ -384,6 +384,10 @@ body {
 
 .navbar-item {
   color: #ff9766;
+}
+
+.kapsel {
+  overflow: hidden;
 }
 
 .hr {

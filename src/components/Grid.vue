@@ -1,10 +1,10 @@
 <template>
   <div
-    class="grid columns  is-multiline is-gapless ">
+    class="grid">
     <div
       v-for="(col, indexX) in gridList"
       :key="indexX"
-      class="column">
+      class="col">
       <app-cell
         v-for="(isAlive, indexY) in col"
         :key="indexY"
@@ -17,27 +17,27 @@
 </template>
 
 <script>
-import Cell from "./Cell.vue";
+import Cell from './Cell.vue';
 export default {
   components: {
-    "app-cell": Cell
+    'app-cell': Cell,
   },
   props: {
     message: {
-      default: "",
-      type: String
+      default: '',
+      type: String,
     },
     importToken: {
-      default: "",
-      type: String
-    }
+      default: '',
+      type: String,
+    },
   },
   data() {
     return {
       width: 64,
       height: 24,
       cells: 0,
-      gridList: []
+      gridList: [],
     };
   },
   computed: {},
@@ -50,18 +50,18 @@ export default {
      * @param {string} val - the value
      */
     message: function(val) {
-      if (val === "nextStep") {
+      if (val === 'nextStep') {
         this.update();
-      } else if (val === "redoSession") {
+      } else if (val === 'redoSession') {
         this.reset();
-      } else if (val === "randomSeed") {
+      } else if (val === 'randomSeed') {
         this.randomSeed();
-      } else if (val === "importSession") {
+      } else if (val === 'importSession') {
         this.importSession();
-      } else if (val === "exportSession") {
+      } else if (val === 'exportSession') {
         this.exportSession();
       }
-    }
+    },
   },
   created() {
     this.cellCalc();
@@ -75,7 +75,7 @@ export default {
       for (let i = 0; i < this.width; i++) {
         this.gridList[i] = [];
         for (let j = 0; j < this.height; j++) {
-          this.gridList[i][j] = { isAlive: false };
+          this.gridList[i][j] = {isAlive: false};
         }
       }
       this.cells = this.width * this.height;
@@ -179,8 +179,8 @@ export default {
      * start value.
      */
     reset: function() {
-      this.gridList.forEach(col => {
-        col.forEach(cell => {
+      this.gridList.forEach((col) => {
+        col.forEach((cell) => {
           cell.isAlive = false;
         });
       });
@@ -213,9 +213,9 @@ export default {
       let regex = /\[\d+,\d+\]/gm;
       let tempArr = this.importToken.match(regex);
       if (tempArr) {
-        tempArr.forEach(element => {
+        tempArr.forEach((element) => {
           element = element.substring(1, element.length - 1);
-          let xy = element.split(",");
+          let xy = element.split(',');
           this.setCell(xy[0], xy[1], true);
         });
       }
@@ -226,28 +226,29 @@ export default {
      * Same format as in importToken().
      */
     exportSession: function() {
-      let exportToken = "";
+      let exportToken = '';
       for (let i = 0; i < this.width; i++) {
         for (let j = 0; j < this.height; j++) {
           if (this.gridList[i][j].isAlive) {
-            exportToken += "[" + i + "," + j + "]";
+            exportToken += '[' + i + ',' + j + ']';
           }
         }
       }
-      this.$emit("exportToken", exportToken);
-    }
-  }
+      this.$emit('exportToken', exportToken);
+    },
+  },
 };
 </script>
 
 <style>
 .grid {
   border: 1px solid #1a0707;
-
-  overflow: hidden;
+  width: -moz-max-content;
+  height: -moz-max-content;
   margin: 0 auto;
   color: #fff;
 }
 .col {
+  float: left;
 }
 </style>

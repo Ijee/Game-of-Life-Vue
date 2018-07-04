@@ -38,13 +38,9 @@ export default {
 
 <style>
 .cell {
-  display: flex;
-  flex: 1 1 auto;
-  width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
-  position: relative; /* If you want text inside of it */
+  width: 25px;
+  height: 25px;
   border: 1px solid #64706c;
-  overflow: hidden;
 }
 
 .cell:hover {
