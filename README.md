@@ -7,9 +7,9 @@
 
 ![Vue 2 - Game of Life Promot](https://i.imgur.com/gdGU13S.png "Promo")
 
-## Live Demo - Github Pages
+## Live Demo - netlify
 
-Coming soon.
+[Live Demo](https://golvue.netlify.com/ "netlify demo")
 
 ## Build Setup
 

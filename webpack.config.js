@@ -10,9 +10,9 @@ module.exports = {
     filename: 'build.js',
   },
   plugins: [
-      new CopyWebpackPlugin([
-        {from: 'index.html', to: 'index.html'},
-      ]),
+    new CopyWebpackPlugin([
+      {from: 'index.html', to: 'index.html'},
+    ]),
   ],
   module: {
     rules: [

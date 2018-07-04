@@ -75,8 +75,8 @@
                     :message="message"
                     :import-token="importToken"
                     @exportToken="exportSession($event)" />
-                  <app-info v-if="mainComponent == 'infoPage'"/>
                 </keep-alive>
+                <app-info v-if="mainComponent == 'infoPage'"/>
               </transition>
             </div>
           </div>
