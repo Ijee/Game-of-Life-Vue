@@ -391,11 +391,7 @@ body {
 }
 
 // hack for bulma hero width
-@media screen and (max-width: 1087px) {
-  .container {
-    max-width: 600px;
-  }
-}
+
 .hr {
   position: relative;
   border-top: 2px solid #414b5c;
