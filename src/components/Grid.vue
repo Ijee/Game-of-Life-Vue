@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      width: 64,
-      height: 24,
+      width: 1,
+      height: 1,
       cells: 0,
       gridList: [],
     };
@@ -247,6 +247,7 @@ export default {
   width: -webkit-max-content;
   height: -moz-max-content;
   height: -webkit-max-content;
+  overflow: hidden;
   margin: 0 auto;
   color: #fff;
 }
