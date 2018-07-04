@@ -244,7 +244,9 @@ export default {
 .grid {
   border: 1px solid #1a0707;
   width: -moz-max-content;
+  width: -webkit-max-content;
   height: -moz-max-content;
+  height: -webkit-max-content;
   margin: 0 auto;
   color: #fff;
 }
