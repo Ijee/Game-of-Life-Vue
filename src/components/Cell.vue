@@ -40,10 +40,10 @@ export default {
 .cell {
   display: flex;
   flex: 1 1 auto;
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
   border: 1px solid #64706c;
-  position: relative;
   overflow: hidden;
 }
 
