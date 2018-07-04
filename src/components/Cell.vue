@@ -38,8 +38,6 @@ export default {
 
 <style>
 .cell {
-  width: 25px;
-  height: 25px;
   border: 1px solid #64706c;
 }
 
