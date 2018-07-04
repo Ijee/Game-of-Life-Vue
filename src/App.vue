@@ -194,30 +194,30 @@
 
 <script>
 // Imports
-import Vue from "vue";
-import Controller from "./components/Controller.vue";
-import Grid from "./components/Grid.vue";
-import AppInfo from "./components/AppInfo.vue";
-import { setInterval, clearInterval } from "timers";
+import Vue from 'vue';
+import Controller from './components/Controller.vue';
+import Grid from './components/Grid.vue';
+import AppInfo from './components/AppInfo.vue';
+import {setInterval, clearInterval} from 'timers';
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    "app-grid": Grid,
-    "app-info": AppInfo,
-    "app-controller": Controller
+    'app-grid': Grid,
+    'app-info': AppInfo,
+    'app-controller': Controller,
   },
   data() {
     return {
-      message: "",
+      message: '',
       isRunning: false,
       isNavbar: false,
       isImport: false,
       isExport: false,
-      mainComponent: "gamePage",
+      mainComponent: 'gamePage',
       speed: 500,
       intervalID: 0,
-      importToken: "",
-      exportToken: ""
+      importToken: '',
+      exportToken: '',
     };
   },
   created() {},
@@ -230,17 +230,17 @@ export default {
      * @param {string} event - the event
      */
     delegate: function(event) {
-      if (event === "play") {
+      if (event === 'play') {
         this.isRunning = !this.isRunning;
         this.restartInterval();
-      } else if (event === "importSession") {
+      } else if (event === 'importSession') {
         this.isImport = true;
-      } else if (event === "exportSession") {
-        this.updateMessage("exportSession");
-      } else if (event === "slowDown") {
+      } else if (event === 'exportSession') {
+        this.updateMessage('exportSession');
+      } else if (event === 'slowDown') {
         this.changeSpeed(100);
         this.restartInterval();
-      } else if (event === "speedUp") {
+      } else if (event === 'speedUp') {
         this.changeSpeed(-100);
         this.restartInterval();
       } else {
@@ -263,7 +263,7 @@ export default {
      * empty string.
      */
     resetMessage: function() {
-      this.message = "";
+      this.message = '';
     },
     /**
      * Restarts the current interval that
@@ -275,7 +275,7 @@ export default {
         this.intervalID = setInterval(
           this.updateMessage,
           this.speed,
-          "nextStep"
+          'nextStep'
         );
       }
     },
@@ -298,7 +298,7 @@ export default {
      * as 'importSession'.
      */
     importSession: function() {
-      this.updateMessage("importSession");
+      this.updateMessage('importSession');
       this.isImport = false;
     },
     /**
@@ -307,14 +307,14 @@ export default {
      * @param {string} scenario - the scenario
      */
     importScenario: function(scenario) {
-      if (scenario === "gosper") {
-        this.importToken = "";
-      } else if (scenario === "glider") {
-        this.importToken = "";
-      } else if (scenario === "multiple") {
-        this.importToken = "";
+      if (scenario === 'gosper') {
+        this.importToken = '';
+      } else if (scenario === 'glider') {
+        this.importToken = '';
+      } else if (scenario === 'multiple') {
+        this.importToken = '';
       }
-      this.updateMessage("importSession");
+      this.updateMessage('importSession');
     },
     /**
      * Changes the exportToken based on param.
@@ -332,10 +332,10 @@ export default {
      */
     toClipboard: function() {
       this.isExport = false;
-      let copyString = document.querySelector("#copystring");
-      copyString.setAttribute("type", "text");
+      let copyString = document.querySelector('#copystring');
+      copyString.setAttribute('type', 'text');
       copyString.select();
-      document.execCommand("copy");
+      document.execCommand('copy');
     },
     /**
      * Swaps out the current mainCompoment that
@@ -345,8 +345,8 @@ export default {
      */
     swapComponent: function(component) {
       this.mainComponent = component;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -393,7 +393,7 @@ body {
 // hack for bulma hero width
 @media screen and (max-width: 1087px) {
   .container {
-    max-width: 100%;
+    max-width: 600px;
   }
 }
 .hr {
