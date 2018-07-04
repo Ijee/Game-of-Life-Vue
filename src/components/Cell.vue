@@ -38,6 +38,8 @@ export default {
 
 <style>
 .cell {
+  display: flex;
+  flex: 1 1 auto;
   width: 20px;
   height: 20px;
   border: 1px solid #64706c;

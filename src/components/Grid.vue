@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid columns is-multiline is-gapless is-centered">
+    class="grid columns is-fullwidth is-gapless ">
     <div
       v-for="(col, indexX) in gridList"
       :key="indexX"
@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      width: 46,
-      height: 20,
+      width: 32,
+      height: 24,
       cells: 0,
       gridList: [],
     };
@@ -243,13 +243,11 @@ export default {
 <style>
 .grid {
   border: 1px solid #1a0707;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
+
   overflow: hidden;
   margin: 0 auto;
   color: #fff;
 }
 .col {
-  float: left;
 }
 </style>

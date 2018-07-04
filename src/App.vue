@@ -65,7 +65,7 @@
       <div class="hero-body">
         <div class="container">
           <div class="columns">
-            <div class="column box is-12">
+            <div class="column box">
               <transition
                 mode="out-in"
                 name="fade">
