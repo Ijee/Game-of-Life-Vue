@@ -65,130 +65,78 @@
       <div class="hero-body">
         <div class="container">
           <div class="columns box is-gapless">
-            <div class="kapsel column ">
-              <transition
-                mode="out-in"
-                name="fade">
-                <keep-alive>
-                  <app-grid
-                    v-if="mainComponent == 'gamePage'"
-                    :message="message"
-                    :import-token="importToken"
-                    @exportToken="exportSession($event)" />
-                  <app-info v-if="mainComponent == 'infoPage'"/>
-                </keep-alive>
-              </transition>
-            </div>
+            <div class="kapsel column "/>
           </div>
-          <!-- Bulma - Notification -->
+          <!-- Bulma - Hero footer -->
+          <footer class="footer">
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column is-12">
+                  <app-controller
+                    :is-running="isRunning"
+                    :main-component="mainComponent"
+                    @send="delegate($event)"/>
+                </div>
+              </div>
+            </div>
+          </footer>
+          <!-- Bulma - Modal -->
           <transition
             mode="out-in"
             name="fade">
             <div
-              v-if="isExport"
-              class="columns">
-              <div class="column is-6 is-offset-3">
-                <div class="notification">
-                  <h6 class="title is-6">
-                    <i class="far fa-save"/>
-                    Export
-                  </h6>
+              v-if="isImport"
+              :class="isImport ? 'is-active' : 'inactive'"
+              class="modal">
+              <div class="modal-background" />
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">
+                    <span class="icon">
+                      <i class="far fa-edit"/>
+                    </span>
+                    <b>Import</b>
+                  </p>
                   <button
                     class="delete"
-                    @click="isExport = false" />
-                  <div class="field has-addons">
-                    <div class="control is-expanded">
-                      <input
-                        id="copystring"
-                        v-model="exportToken"
-                        type="text"
-                        class="input is-info is-rounded"
-                        @focus="$event.target.select()">
-                    </div>
-                    <div class="control">
-                      <a
-                        class="button is-dark"
-                        @click="toClipboard">
-                        <i class="fas fa-paste" />
-                      </a>
-                    </div>
+                    aria-label="close"
+                    @click="isImport = false" />
+                </header>
+                <section class="modal-card-body">
+                  <textarea
+                    v-model="importToken"
+                    class="textarea is-primary"
+                    type="text"
+                    placeholder="Paste here" />
+                </section>
+                <footer class="modal-card-foot">
+                  <button
+                    class="button is-success"
+                    @click="importSession">Import</button>
+                  <button
+                    class="button"
+                    @click="isImport = false">Cancel</button>
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <span class="select">
+                        <select>
+                          <option selected>Scenario</option>
+                          <option>Gosper glider gun</option>
+                          <option>Glider</option>
+                          <option>Multiple patterns</option>
+                        </select>
+                      </span>
+                      <span class="icon is-small is-left">
+                        <i
+                          class="fas fa-list-ul"
+                          style="color: #000" />
+                      </span>
+                    </p>
                   </div>
-                </div>
-              </div>
+              </footer></div>
             </div>
           </transition>
-        </div>
-      </div>
-      <!-- Bulma - Hero footer -->
-      <footer class="footer">
-        <div class="container">
-          <div class="columns is-centered">
-            <div class="column is-12">
-              <app-controller
-                :is-running="isRunning"
-                :main-component="mainComponent"
-                @send="delegate($event)"/>
-            </div>
-          </div>
-        </div>
-      </footer>
-      <!-- Bulma - Modal -->
-      <transition
-        mode="out-in"
-        name="fade">
-        <div
-          v-if="isImport"
-          :class="isImport ? 'is-active' : 'inactive'"
-          class="modal">
-          <div class="modal-background" />
-          <div class="modal-card">
-            <header class="modal-card-head">
-              <p class="modal-card-title">
-                <span class="icon">
-                  <i class="far fa-edit"/>
-                </span>
-                <b>Import</b>
-              </p>
-              <button
-                class="delete"
-                aria-label="close"
-                @click="isImport = false" />
-            </header>
-            <section class="modal-card-body">
-              <textarea
-                v-model="importToken"
-                class="textarea is-primary"
-                type="text"
-                placeholder="Paste here" />
-            </section>
-            <footer class="modal-card-foot">
-              <button
-                class="button is-success"
-                @click="importSession">Import</button>
-              <button
-                class="button"
-                @click="isImport = false">Cancel</button>
-              <div class="field">
-                <p class="control has-icons-left">
-                  <span class="select">
-                    <select>
-                      <option selected>Scenario</option>
-                      <option>Gosper glider gun</option>
-                      <option>Glider</option>
-                      <option>Multiple patterns</option>
-                    </select>
-                  </span>
-                  <span class="icon is-small is-left">
-                    <i
-                      class="fas fa-list-ul"
-                      style="color: #000" />
-                  </span>
-                </p>
-              </div>
-          </footer></div>
-        </div>
-      </transition>
-    </section>
+    </div></div></section>
   </div>
 </template>
 
