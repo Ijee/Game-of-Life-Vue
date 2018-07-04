@@ -116,6 +116,7 @@ export default {
   padding: 0;
   margin: auto;
 }
+
 .green {
   background-color: hsla(120, 77%, 26%, 0.6);
 }

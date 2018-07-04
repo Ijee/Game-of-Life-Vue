@@ -1,10 +1,10 @@
 <template>
   <div
-    class="grid">
+    class="grid columns is-multiline is-gapless is-centered">
     <div
       v-for="(col, indexX) in gridList"
       :key="indexX"
-      class="col">
+      class="column">
       <app-cell
         v-for="(isAlive, indexY) in col"
         :key="indexY"

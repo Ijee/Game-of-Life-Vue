@@ -75,8 +75,8 @@
                     :message="message"
                     :import-token="importToken"
                     @exportToken="exportSession($event)" />
+                  <app-info v-if="mainComponent == 'infoPage'"/>
                 </keep-alive>
-                <app-info v-if="mainComponent == 'infoPage'"/>
               </transition>
             </div>
           </div>
@@ -122,8 +122,8 @@
       <!-- Bulma - Hero footer -->
       <footer class="footer">
         <div class="container">
-          <div class="columns">
-            <div class="column is-11 is-centered">
+          <div class="columns is-centered">
+            <div class="column is-12">
               <app-controller
                 :is-running="isRunning"
                 :main-component="mainComponent"
