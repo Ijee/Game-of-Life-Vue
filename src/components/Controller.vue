@@ -114,7 +114,6 @@ export default {
 <style scoped>
 .box {
   padding: 0;
-  margin: auto;
 }
 
 .green {
