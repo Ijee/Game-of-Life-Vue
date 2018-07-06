@@ -56,6 +56,8 @@
               </span>
               <b>Random</b>
           </button></p>
+        </div>
+        <div class="field has-addons has-addons-centered">
           <p class="control">
             <button
               :disabled="mainComponent !== 'gamePage'"
@@ -87,12 +89,12 @@ export default {
   props: {
     isRunning: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     mainComponent: {
-      default: 'gamePage',
-      type: String,
-    },
+      default: "gamePage",
+      type: String
+    }
   },
   data() {
     return {};
@@ -105,9 +107,9 @@ export default {
      * @param {string} event - the event
      */
     send: function(event) {
-      this.$emit('send', event);
-    },
-  },
+      this.$emit("send", event);
+    }
+  }
 };
 </script>
 
