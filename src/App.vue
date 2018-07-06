@@ -63,7 +63,7 @@
       </div>
       <!-- Bulma - Hero content -->
       <div class="hero-body">
-        <div class="container">
+        <div class="container is-paddingless">
           <div class="columns box is-fullwidth is-gapless">
             <div class="kapsel column is-12">
               <transition
@@ -123,8 +123,8 @@
       <!-- Bulma - Hero footer -->
       <footer class="footer">
         <div class="container">
-          <div class="columns is-fullwidth">
-            <div class="column is-12">
+          <div class="columns ">
+            <div class="column is-narrow">
               <app-controller
                 :is-running="isRunning"
                 :main-component="mainComponent"
@@ -215,7 +215,7 @@ export default {
       isImport: false,
       isExport: false,
       mainComponent: 'gamePage',
-      speed: 500,
+      speed: 100,
       intervalID: 0,
       importToken: '',
       exportToken: '',
@@ -239,10 +239,10 @@ export default {
       } else if (event === 'exportSession') {
         this.updateMessage('exportSession');
       } else if (event === 'slowDown') {
-        this.changeSpeed(100);
+        this.speed > 100 ? this.changeSpeed(-100) : this.changeSpeed(-20);
         this.restartInterval();
       } else if (event === 'speedUp') {
-        this.changeSpeed(-100);
+        this.speed < 100 ? this.changeSpeed(20) : this.changeSpeed(100);
         this.restartInterval();
       } else {
         this.updateMessage(event);
@@ -275,7 +275,7 @@ export default {
       if (this.isRunning) {
         this.intervalID = setInterval(
           this.updateMessage,
-          this.speed,
+          50000 / this.speed,
           'nextStep'
         );
       }
@@ -288,10 +288,10 @@ export default {
      */
     changeSpeed: function(speed) {
       this.speed += speed;
-      if (this.speed < 100) {
-        this.speed = 100;
-      } else if (this.speed > 2500) {
-        this.speed = 2500;
+      if (this.speed < 20) {
+        this.speed = 20;
+      } else if (this.speed > 500) {
+        this.speed = 500;
       }
     },
     /**
@@ -378,6 +378,7 @@ body {
 .hero-body {
   align-items: stretch !important;
 }
+
 .footer {
   padding: 1rem;
   background-color: transparent;
@@ -387,12 +388,6 @@ body {
   color: #ff9766;
 }
 
-// hack for bulma hero width
-// @media screen and (max-width: 1087px) {
-//  .container {
-//    max-width: 100%;
-//  }
-// }
 .hr {
   position: relative;
   border-top: 2px solid #414b5c;

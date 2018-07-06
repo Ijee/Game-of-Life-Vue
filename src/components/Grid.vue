@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      width: 42,
+      width: 46,
       height: 20,
       gridList: [],
 
@@ -282,7 +282,6 @@ export default {
   display: flex;
   flex: 1;
   justify-content: center;
-  color: #fff;
 }
 .column {
   flex: 1;

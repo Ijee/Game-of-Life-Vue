@@ -1,20 +1,20 @@
 <template>
   <div class="box">
     <div class="columns is-fullwidth">
-      <div class="column">
+      <div class="column is-size-7-mobile is-half-mobile">
         <strong>tick: {{ currentTick }}</strong>
       </div>
-      <div class="column">
+      <div class="column is-size-7-mobile is-half-mobile">
         <strong>cell count {{ cellCount }}</strong>
       </div>
-      <div class="column">
+      <div class="column is-size-7-mobile is-half-mobile">
         <strong>cells alive: {{ cellsAlive }}</strong>
       </div>
-      <div class="column">
+      <div class="column is-size-7-mobile is-half-mobile">
         <strong>cells created: {{ cellsCreated }}</strong>
       </div>
-      <div class="column">
-        <strong>speed: {{ convertSpeed }}</strong>
+      <div class="column is-size-7-mobile is-half-mobile">
+        <strong>speed: {{ currentSpeed }} %</strong>
       </div>
     </div>
   </div>
@@ -47,17 +47,12 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    convertSpeed: function() {
-      return Math.round(500 / this.currentSpeed * 100) + '%';
-    },
-  },
   methods: {},
 };
 </script>
 
 <style scoped>
 .box {
-  background-color: rgba(220, 236, 218);
+  background-color: hsla(0, 0%, 71%, 0.6);
 }
 </style>

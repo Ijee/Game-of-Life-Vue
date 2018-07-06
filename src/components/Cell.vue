@@ -44,7 +44,7 @@ export default {
 }
 
 .cell:hover {
-  background-color: #f85858;
+  background-color: rgba(132, 26, 26, 0.6);
 }
 
 .alive {

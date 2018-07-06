@@ -1,85 +1,85 @@
 <template>
-  <div class="container">
-    <div class="box">
-      <div class="field has-addons has-addons-centered is-marginless">
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            title="slow down"
-            @click="send('slowDown')">
-            <i class="fas fa-backward"/>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            :class="isRunning ? 'green' : 'red'"
-            class="button"
-            title="play"
-            @click="send('play')">
-            <i
-              :class="isRunning ? 'fa-pause-circle' : 'fa-play-circle'"
-              class="far"/>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            title="clear grid"
-            @click="send('redoSession')">
-            <i class="fas fa-redo"/>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            title="next step"
-            @click="send('nextStep')">
-            <i class="fas fa-step-forward"/>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            title="speed up"
-            @click="send('speedUp')">
-            <i class="fas fa-forward"/>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            @click="send('randomSeed')">
-            <span class="icon">
-              <i class="fas fa-random"/>
-            </span>
-            <b>Random</b>
-        </button></p>
-      </div>
-      <div class="field has-addons has-addons-centered is-marginless">
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            @click="send('importSession')">
-            <span class="icon">
-              <i class="far fa-edit"/>
-            </span>
-            <b>Import</b>
-        </button></p>
-        <p class="control">
-          <button
-            :disabled="mainComponent !== 'gamePage'"
-            class="button"
-            @click="send('exportSession')">
-            <span class="icon">
-              <i class="far fa-save"/>
-            </span>
-            <b>Export</b>
-        </button></p>
-      </div>
+
+  <div class="box">
+    <div class="field has-addons has-addons-centered is-marginless">
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          title="slow down"
+          @click="send('slowDown')">
+          <i class="fas fa-backward"/>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          :class="isRunning ? 'green' : 'red'"
+          class="button"
+          title="play"
+          @click="send('play')">
+          <i
+            :class="isRunning ? 'fa-pause-circle' : 'fa-play-circle'"
+            class="far"/>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          title="clear grid"
+          @click="send('redoSession')">
+          <i class="fas fa-redo"/>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          title="next step"
+          @click="send('nextStep')">
+          <i class="fas fa-step-forward"/>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          title="speed up"
+          @click="send('speedUp')">
+          <i class="fas fa-forward"/>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          @click="send('randomSeed')">
+          <span class="icon">
+            <i class="fas fa-random"/>
+          </span>
+          <b>Random</b>
+      </button></p>
+    </div>
+    <div class="field has-addons has-addons-centered is-marginless">
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          @click="send('importSession')">
+          <span class="icon">
+            <i class="far fa-edit"/>
+          </span>
+          <b>Import</b>
+      </button></p>
+      <p class="control">
+        <button
+          :disabled="mainComponent !== 'gamePage'"
+          class="button"
+          @click="send('exportSession')">
+          <span class="icon">
+            <i class="far fa-save"/>
+          </span>
+          <b>Export</b>
+      </button></p>
     </div>
   </div>
+
 </template>
 
   <script>
