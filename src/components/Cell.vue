@@ -30,7 +30,7 @@ export default {
   methods: {
     reborn: function() {
       this.isAlive.isAlive = !this.isAlive.isAlive;
-      this.$emit('updateStatus', this.xPos, this.yPos, this.isAlive);
+      this.$emit('wasUpdated', this.isAlive.isAlive);
     },
   },
 };

@@ -1,26 +1,37 @@
 <template>
-  <div
-    class="grid columns">
+  <div>
+    <app-stats
+      :current-tick="currentTick"
+      :cell-count="cellCount"
+      :cells-alive="cellsAlive"
+      :cells-created="cellsCreated"
+      :current-speed="currentSpeed"/>
     <div
-      v-for="(col, indexX) in gridList"
-      :key="indexX"
-      class="column">
-      <app-cell
-        v-for="(isAlive, indexY) in col"
-        :key="indexY"
-        :status-obj="isAlive"
-        :x-pos="indexX"
-        :y-pos="indexY"
-      />
+      class="grid columns">
+      <div
+        v-for="(col, indexX) in gridList"
+        :key="indexX"
+        class="column">
+        <app-cell
+          v-for="(isAlive, indexY) in col"
+          :key="indexY"
+          :status-obj="isAlive"
+          :x-pos="indexX"
+          :y-pos="indexY"
+          @wasUpdated="updateCellCount"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Cell from './Cell.vue';
+import Stats from './Stats.vue';
 export default {
   components: {
     'app-cell': Cell,
+    'app-stats': Stats,
   },
   props: {
     message: {
@@ -31,13 +42,21 @@ export default {
       default: '',
       type: String,
     },
+    currentSpeed: {
+      default: 0,
+      type: Number,
+    },
   },
   data() {
     return {
-      width: 32,
-      height: 16,
-      cells: 0,
+      width: 42,
+      height: 20,
       gridList: [],
+
+      currentTick: 0,
+      cellCount: 0,
+      cellsAlive: 0,
+      cellsCreated: 0,
     };
   },
   computed: {},
@@ -52,6 +71,7 @@ export default {
     message: function(val) {
       if (val === 'nextStep') {
         this.update();
+        this.currentTick++;
       } else if (val === 'redoSession') {
         this.reset();
       } else if (val === 'randomSeed') {
@@ -78,7 +98,7 @@ export default {
           this.gridList[i][j] = {isAlive: false};
         }
       }
-      this.cells = this.width * this.height;
+      this.cellCount = this.width * this.height;
     },
     /**
      * Changes the 'isAlive' object property
@@ -90,7 +110,10 @@ export default {
      * @param {boolean} bool - the new boolean
      */
     setCell: function(x, y, bool) {
-      this.gridList[x][y].isAlive = bool;
+      if (this.gridList[x][y].isAlive != bool) {
+        this.gridList[x][y].isAlive = bool;
+        this.updateCellCount(bool);
+      }
       // let row = this.gridList[x];
       // row.splice(y, 1, {isAlive: true});
       // this.gridList.splice(x, 1, row);
@@ -179,6 +202,9 @@ export default {
      * start value.
      */
     reset: function() {
+      this.currentTick = 0;
+      this.cellsAlive = 0;
+      this.cellsCreated = 0;
       this.gridList.forEach((col) => {
         col.forEach((cell) => {
           cell.isAlive = false;
@@ -236,12 +262,19 @@ export default {
       }
       this.$emit('exportToken', exportToken);
     },
+    updateCellCount: function(bool) {
+      if (bool) {
+        this.cellsAlive++;
+        this.cellsCreated++;
+      } else {
+        this.cellsAlive--;
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss">
-// margin: 0 auto;
 .grid {
   border: 1px solid #1a0707;
   padding: 0;
