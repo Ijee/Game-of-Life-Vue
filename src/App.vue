@@ -65,7 +65,7 @@
       <div class="hero-body">
         <div class="container is-paddingless">
           <div class="columns box is-fullwidth is-gapless">
-            <div class="kapsel column is-12">
+            <div class="column is-12">
               <transition
                 mode="out-in"
                 name="fade">

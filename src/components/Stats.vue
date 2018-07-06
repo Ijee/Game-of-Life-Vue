@@ -2,19 +2,19 @@
   <div class="box">
     <div class="columns is-fullwidth">
       <div class="column is-size-7-mobile is-half-mobile">
-        <strong>tick: {{ currentTick }}</strong>
+        <strong>TICK: {{ currentTick }}</strong>
       </div>
       <div class="column is-size-7-mobile is-half-mobile">
-        <strong>cell count {{ cellCount }}</strong>
+        <strong>CELL COUNT: {{ cellCount }}</strong>
       </div>
       <div class="column is-size-7-mobile is-half-mobile">
-        <strong>cells alive: {{ cellsAlive }}</strong>
+        <strong>CELLS ALIVE: {{ cellsAlive }}</strong>
       </div>
       <div class="column is-size-7-mobile is-half-mobile">
-        <strong>cells created: {{ cellsCreated }}</strong>
+        <strong>CELLS CREATED: {{ cellsCreated }}</strong>
       </div>
       <div class="column is-size-7-mobile is-half-mobile">
-        <strong>speed: {{ currentSpeed }} %</strong>
+        <strong>SPEED: {{ currentSpeed }} %</strong>
       </div>
     </div>
   </div>
@@ -54,5 +54,12 @@ export default {
 <style scoped>
 .box {
   background-color: hsla(0, 0%, 71%, 0.6);
+}
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  margin: 0;
 }
 </style>
