@@ -64,8 +64,8 @@
       <!-- Bulma - Hero content -->
       <div class="hero-body">
         <div class="container">
-          <div class="columns box is-gapless">
-            <div class="kapsel column ">
+          <div class="columns box is-fullwidth is-gapless">
+            <div class="kapsel column is-12">
               <transition
                 mode="out-in"
                 name="fade">
@@ -387,15 +387,14 @@ body {
 }
 
 .kapsel {
-  overflow: hidden;
 }
 
 // hack for bulma hero width
-@media screen and (max-width: 1087px) {
-  .container {
-    max-width: 100%;
-  }
-}
+// @media screen and (max-width: 1087px) {
+//  .container {
+//    max-width: 100%;
+//  }
+// }
 .hr {
   position: relative;
   border-top: 2px solid #414b5c;

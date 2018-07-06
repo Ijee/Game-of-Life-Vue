@@ -38,9 +38,9 @@ export default {
 
 <style>
 .cell {
-  width: 25px;
-  height: 25px;
+  flex: 1;
   border: 1px solid #64706c;
+  padding-bottom: 100%;
 }
 
 .cell:hover {

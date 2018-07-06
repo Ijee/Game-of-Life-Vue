@@ -1,10 +1,10 @@
 <template>
   <div
-    class="grid">
+    class="grid columns">
     <div
       v-for="(col, indexX) in gridList"
       :key="indexX"
-      class="col">
+      class="column">
       <app-cell
         v-for="(isAlive, indexY) in col"
         :key="indexY"
@@ -240,18 +240,23 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+// margin: 0 auto;
 .grid {
   border: 1px solid #1a0707;
-  width: -moz-max-content;
-  width: -webkit-max-content;
-  height: -moz-max-content;
-  height: -webkit-max-content;
-  overflow: hidden;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex: 1;
+  justify-content: center;
   color: #fff;
 }
-.col {
-  float: left;
+.column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  flex-direction: column;
 }
 </style>
