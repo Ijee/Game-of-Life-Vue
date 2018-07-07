@@ -2,7 +2,8 @@
   <div
     :class="isAlive.isAlive ? 'alive' : 'dead'"
     class="cell"
-    @click="reborn()"/>
+    @click="reborn(true)"
+    @mouseover="reborn(isMouseDown)"/>
 </template>
 <script>
 export default {
@@ -21,6 +22,10 @@ export default {
       default: -1,
       type: Number,
     },
+    isMouseDown: {
+      default: false,
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -28,9 +33,11 @@ export default {
     };
   },
   methods: {
-    reborn: function() {
-      this.isAlive.isAlive = !this.isAlive.isAlive;
-      this.$emit('wasUpdated', this.isAlive.isAlive);
+    reborn: function(bool) {
+      if (bool) {
+        this.isAlive.isAlive = !this.isAlive.isAlive;
+        this.$emit('wasUpdated', this.isAlive.isAlive);
+      }
     },
   },
 };

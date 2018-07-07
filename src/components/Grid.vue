@@ -7,7 +7,10 @@
       :cells-created="cellsCreated"
       :current-speed="currentSpeed"/>
     <div
-      class="grid columns">
+      class="grid columns"
+      @mousedown="isMouseDown = true"
+      @mouseup="isMouseDown = false"
+      @mouseleave="isMouseDown = false">
       <div
         v-for="(col, indexX) in gridList"
         :key="indexX"
@@ -18,6 +21,7 @@
           :status-obj="isAlive"
           :x-pos="indexX"
           :y-pos="indexY"
+          :is-mouse-down="isMouseDown"
           @wasUpdated="updateCellCount"
         />
       </div>
@@ -53,10 +57,14 @@ export default {
       height: 20,
       gridList: [],
 
+      // Stats that get passed down to the app-stats component
       currentTick: 0,
       cellCount: 0,
       cellsAlive: 0,
       cellsCreated: 0,
+
+      //
+      isMouseDown: false,
     };
   },
   computed: {},
@@ -262,6 +270,11 @@ export default {
       }
       this.$emit('exportToken', exportToken);
     },
+    /**
+     * Updates the current cellcount on each new tick.
+     *
+     * @param {boolean} bool - boolean based on cell isAlive status
+     */
     updateCellCount: function(bool) {
       if (bool) {
         this.cellsAlive++;
