@@ -124,7 +124,7 @@
       <footer class="footer">
         <div class="container">
           <div class="columns ">
-            <div class="column is-narrow">
+            <div class="column is-fullwidth">
               <app-controller
                 :is-running="isRunning"
                 :main-component="mainComponent"
@@ -309,7 +309,7 @@ export default {
      */
     importScenario: function(scenario) {
       if (scenario === 'gosper') {
-        this.importToken = '';
+        this.importToken = '[1.1]';
       } else if (scenario === 'glider') {
         this.importToken = '';
       } else if (scenario === 'multiple') {

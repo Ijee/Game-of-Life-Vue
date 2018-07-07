@@ -39,7 +39,8 @@ export default {
 <style>
 .cell {
   flex: 1;
-  border: 1px solid #64706c;
+  border-right: 1px solid #64706c;
+  border-bottom: 1px solid #64706c;
   padding-bottom: 100%;
 }
 
@@ -48,6 +49,6 @@ export default {
 }
 
 .alive {
-  background-color: #bb4747;
+  background-color: #bb4747 !important;
 }
 </style>
