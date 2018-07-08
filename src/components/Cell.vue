@@ -33,6 +33,14 @@ export default {
     };
   },
   methods: {
+    /**
+     * Checks if the cell has been clicked
+     * and switches its isAlive status.
+     * Also emits to the grid component for the
+     * drag and drop functionality.
+     *
+     * @param {boolean} bool - the isMouseDown boolean
+     */
     reborn: function(bool) {
       if (bool) {
         this.isAlive.isAlive = !this.isAlive.isAlive;
@@ -46,8 +54,8 @@ export default {
 <style>
 .cell {
   flex: 1;
-  border-right: 1px solid #64706c;
-  border-bottom: 1px solid #64706c;
+  border-right: 1px solid #1a0707;
+  border-bottom: 1px solid #1a0707;
   padding-bottom: 100%;
 }
 

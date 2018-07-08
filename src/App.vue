@@ -62,7 +62,7 @@
         </nav>
       </div>
       <!-- Bulma - Hero content -->
-      <div class="hero-body ">
+      <div class="hero-body">
         <div class="container is-paddingless">
           <div class="columns box is-fullwidth is-gapless">
             <div class="column is-12">
@@ -358,7 +358,7 @@ export default {
     },
     /**
      * Copies the text in the #copystring input
-     * to the users clipboard. May not work on
+     * to the users clipboard. May not work for
      * some clients
      */
     toClipboard: function() {
@@ -407,6 +407,7 @@ body {
 
 .hero-body {
   align-items: stretch !important;
+  padding-top: 18px;
 }
 
 .footer {

@@ -289,7 +289,8 @@ export default {
 
 <style lang="scss">
 .grid {
-  border: 1px solid #1a0707;
+  border-top: 1px solid #1a0707;
+  border-left: 1px solid #1a0707;
   padding: 0;
   margin: 0;
   display: flex;
