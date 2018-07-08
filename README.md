@@ -6,7 +6,7 @@
 
 ## Screenshot
 
-![Vue 2 - Game of Life Promot](https://i.imgur.com/gdGU13S.png "Promo")
+![Vue 2 - Game of Life Promot](https://i.imgur.com/rk6UpoM.png "Promo")
 
 ## Live Demo - netlify
 
