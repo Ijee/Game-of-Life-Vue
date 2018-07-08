@@ -1,7 +1,8 @@
 # Game of Life - Vue 2
 
 > John Conway's game of life implementation with vuejs, bulma and Fontawesome! This was a fun project to learn more about vue, webpack and all the fun stuff you can find on npm.
-> Let me know if you find any issues while running the app.
+> It should be fairly easy to strip the components down to a bare bone application and build bomberman, snake or even a maze with it easily.
+> Everything should be decently commented and work but let me know if you find any issues while running the app.
 
 ## Screenshot
 

@@ -213,16 +213,25 @@ export default {
   },
   data() {
     return {
+      // The message that gets send down to app-grid at a steady interval
       message: '',
+      // Export and import tokens that either get send down / come up
+      // from app-grid
+      importToken: '',
+      exportToken: '',
+
+      // Booleans to determine what to show to the client
       isRunning: false,
       isNavbar: false,
       isImport: false,
       isExport: false,
-      mainComponent: 'gamePage',
+
+      // Used to determine the speed the application runs at
       speed: 100,
       intervalID: 0,
-      importToken: '',
-      exportToken: '',
+
+      // Variables to determine which page/scenario to show
+      mainComponent: 'gamePage',
       selectedScenario: 'scenario',
     };
   },
@@ -359,7 +368,7 @@ export default {
     /**
      * Copies the text in the #copystring input
      * to the users clipboard. May not work for
-     * some clients
+     * some clients.
      */
     toClipboard: function() {
       this.isExport = false;
@@ -426,6 +435,9 @@ body {
   margin: 0px;
   bottom: 0;
 }
+
+// The transitions used to switch out my page components as well as
+// the import/export modal
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.35s linear;

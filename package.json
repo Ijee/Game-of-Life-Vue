@@ -1,6 +1,6 @@
 {
   "name": "game_of_life_vue2",
-  "description": "game of life implementation with vuejs.",
+  "description": "game of life implementation with vuejs, bulma and fontawesome.",
   "version": "1.0.0",
   "author": "Ijee <IjeeX.Site@gmail.com>",
   "license": "MIT",
@@ -12,7 +12,6 @@
   "dependencies": {
     "bulma": "^0.7.1",
     "eslint": "^4.19.1",
-    "tippy.js": "^2.5.3",
     "vue": "^2.5.11"
   },
   "browserslist": [
