@@ -12,7 +12,7 @@
                 <span class="icon">
                   <i class="fas fa-heartbeat"/>
                 </span>
-                <span>GAME OF LIFE</span>
+                <span><strong>GAME OF LIFE</strong></span>
               </a>
               <span
                 :class="{'is-active': isNavbar}"

@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .box {
-  background-color: #e1e8f0;
+  background-color: #e7eef5;
 }
 .columns {
   display: flex;

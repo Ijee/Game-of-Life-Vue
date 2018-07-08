@@ -7,8 +7,8 @@
     <div class="content">
       <h5 class="title is-5">About the game:</h5>
       Created in 1970, John Horton Conway made this well known game also known
-      as 'Life'. The game is a automated and based on 4 rules that determine
-      the status of a cell inside the grid. A cell can either be 'alive' or
+      as 'Life'. The game is automated and based on 4 rules that determine
+      the status of all cells inside the grid. A cell can either be 'alive' or
       'dead'. Every turn (tick) rules get applied to all cells that are
       currently alive. Further Information can be found <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">here</a>.
       <h5 class="title is-5">The rules:</h5>
