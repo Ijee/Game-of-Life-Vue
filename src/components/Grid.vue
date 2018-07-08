@@ -291,8 +291,6 @@ export default {
 .grid {
   border-top: 1px solid #1a0707;
   border-left: 1px solid #1a0707;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex: 1;
   justify-content: center;
