@@ -63,7 +63,7 @@ export default {
       cellsAlive: 0,
       cellsCreated: 0,
 
-      //
+      // A prop that gets used by the app-cell component (drag)
       isMouseDown: false,
     };
   },

@@ -408,6 +408,7 @@ body {
 .hero-body {
   align-items: stretch !important;
   padding-top: 18px;
+  padding-bottom: 12px;
 }
 
 .footer {
