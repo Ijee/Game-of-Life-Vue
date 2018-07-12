@@ -12,6 +12,15 @@
 
 [Live Demo](https://golvue.netlify.com/ "netlify demo")
 
+---
+
+## Some things to consider in the future:
+
+1.  Zoomable/Draggable grid for more simultaneous cells
+2.  Make Navigation / Modal to component
+3.  Rule90 ruleset implementation
+4.  More interesting scenarios
+
 ## Build Setup
 
 ```bash
@@ -24,6 +33,8 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+---
 
 ## License:
 
