@@ -4,6 +4,8 @@
 > It should be fairly easy to strip the components down to a bare bone application and build bomberman, snake or even a maze with it easily.
 > Everything should be decently commented and work but let me know if you find any issues while running the app.
 
+---
+
 ## Screenshot
 
 ![Vue 2 - Game of Life Promot](https://i.imgur.com/rk6UpoM.png "Promo")
@@ -20,6 +22,8 @@
 2.  Make Navigation / Modal to component
 3.  Rule90 ruleset implementation
 4.  More interesting scenarios
+
+---
 
 ## Build Setup
 
@@ -39,3 +43,5 @@ npm run build
 ## License:
 
 This project is licensed under the MIT License.
+
+---
