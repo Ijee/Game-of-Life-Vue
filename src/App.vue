@@ -49,7 +49,8 @@
                   <a
                     class="button is-info"
                     href="https://github.com/Ijee/Game-of-Life-Vue2"
-                    target="_blank">
+                    target="_blank"
+                    rel="noopener">
                     <span class="icon">
                       <i class="fab fa-github"/>
                     </span>
