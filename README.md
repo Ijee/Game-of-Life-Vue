@@ -40,6 +40,12 @@ npm run build
 
 ---
 
+## Vue Cli
+
+This project got updated to the newest Vue Cli app structure / tooling. If you want to see the old version you can find it under the [1.0.0](https://github.com/Ijee/Game-of-Life-Vue2/tree/1.0.0) branch.
+
+---
+
 ## License:
 
 This project is licensed under the MIT License.
