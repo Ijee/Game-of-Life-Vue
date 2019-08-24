@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="columns is-fullwidth">
+    <div class="columns is-fullwidth is-gapless">
       <div class="column is-size-7-mobile is-half-mobile">
         <strong>TICK: {{ currentTick }}</strong>
       </div>

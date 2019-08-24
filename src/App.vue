@@ -404,6 +404,8 @@ body {
   padding-bottom: 12px;
 }
 
+
+
 .footer {
   padding: 1rem;
   background-color: transparent;

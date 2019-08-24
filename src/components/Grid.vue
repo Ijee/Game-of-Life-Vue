@@ -7,14 +7,14 @@
       :cells-created="cellsCreated"
       :current-speed="currentSpeed"/>
     <div
-      class="grid columns"
+      class="game-grid columns"
       @mousedown="isMouseDown = true"
       @mouseup="isMouseDown = false"
       @mouseleave="isMouseDown = false">
       <div
         v-for="(col, indexX) in gridList"
         :key="indexX"
-        class="column">
+        class="game-column">
         <app-cell
           v-for="(isAlive, indexY) in col"
           :key="indexY"
@@ -288,14 +288,14 @@ export default {
 </script>
 
 <style lang="scss">
-.grid {
+.game-grid {
   border-top: 1px solid #1a0707;
   border-left: 1px solid #1a0707;
   display: flex;
   flex: 1;
   justify-content: center;
 }
-.column {
+.game-column {
   flex: 1;
   display: flex;
   justify-content: center;

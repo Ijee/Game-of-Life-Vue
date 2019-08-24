@@ -1,5 +1,4 @@
 <template>
-
   <div class="box">
     <div class="field has-addons has-addons-centered is-marginless">
       <p class="control">
@@ -17,9 +16,8 @@
           class="button"
           title="play"
           @click="send('play')">
-          <i
-            :class="isRunning ? 'fa-pause-circle' : 'fa-play-circle'"
-            class="far"/>
+         <font-awesome-icon v-show="isRunning" :icon="['fas', 'stop']"></font-awesome-icon>
+         <font-awesome-icon v-show="!isRunning" :icon="['fas', 'play']"></font-awesome-icon>
       </button></p>
       <p class="control">
         <button
