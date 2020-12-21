@@ -2,17 +2,19 @@
   <div
     :class="isAlive.isAlive ? 'alive' : 'dead'"
     class="cell"
-    @click="reborn(true)"
+    @mousedown="reborn(true)"
     @mouseover="reborn(isMouseDown)"/>
 </template>
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, reactive } from "vue";
+
+export default defineComponent({
   props: {
     statusObj: {
-      default: function() {
-        return {isAlive: false};
-      },
       type: Object,
+      default: () => ({
+        isAlive: false
+      })
     },
     xPos: {
       default: -1,
@@ -27,14 +29,12 @@ export default {
       type: Boolean,
     },
   },
-  data() {
+  setup(props) {
+    let isAlive = reactive(props.statusObj)
+
     return {
-      // The status for a single cell.
-      // Sadly it is an anti pattern because ES2015 / Vue
-      // do have some problems to deal with a 2D-Array (not-reactive).
-      // If you have a different idea how to fix this create an issue :)
-      isAlive: this.statusObj,
-    };
+      isAlive
+    }
   },
   methods: {
     /**
@@ -45,19 +45,20 @@ export default {
      *
      * @param {boolean} bool - the isMouseDown boolean
      */
-    reborn: function(bool) {
+    reborn: function(bool: boolean) {
       if (bool) {
         this.isAlive.isAlive = !this.isAlive.isAlive;
         this.$emit('wasUpdated', this.isAlive.isAlive);
       }
     },
   },
-};
+});
 </script>
 
 <style>
 .cell {
   flex: 1;
+  user-select: none;
   border-right: 1px solid #1a0707;
   border-bottom: 1px solid #1a0707;
   padding-bottom: 100%;
