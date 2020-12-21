@@ -1,10 +1,9 @@
 {
   "name": "game_of_life_vue2",
-  "description": "game of life implementation with vuejs, bulma and fontawesome.",
   "version": "1.1.0",
-  "author": "Ijee <IjeeX.Site@gmail.com>",
-  "license": "MIT",
   "private": true,
+  "description": "game of life implementation with vuejs, bulma and fontawesome.",
+  "author": "Ijee <IjeeX.Site@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -17,16 +16,16 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "bulma": "^0.9.1",
-    "core-js": "^2.6.12",
+    "core-js": "^3.6.5",
     "vue": "^2.6.12"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
+    "@vue/cli-plugin-babel": "^4.5.9",
+    "@vue/cli-plugin-eslint": "^4.5.9",
+    "@vue/cli-service": "^4.5.9",
     "babel-eslint": "^10.1.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.30.0",
     "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.12"
@@ -53,5 +52,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "license": "MIT"
 }
