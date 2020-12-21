@@ -2,7 +2,7 @@
   <div class="gameinfo">
     <h1 class="title">Game of Life</h1>
     <h2 class="subtitle">Implementation of John Conway's Game of Life built with
-    vuejs 2, bulma and Fontawesome. </h2>
+    vuejs 3 bulma and Fontawesome. </h2>
     <hr>
     <div class="content">
       <h5 class="title is-5">About the game:</h5>
@@ -30,14 +30,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {};
-  },
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+
+export default defineComponent({
+  setup() {},
   created() {},
   methods: {},
-};
+});
 </script>
 
 <style>

@@ -48,7 +48,7 @@
                 <span class="navbar-item">
                   <a
                     class="button is-info"
-                    href="https://github.com/Ijee/Game-of-Life-Vue2"
+                    href="https://github.com/Ijee/Game-of-Life-Vue"
                     target="_blank"
                     rel="noopener">
                     <span class="icon">
@@ -77,7 +77,7 @@
                     :import-token="importToken"
                     :current-speed="speed"
                     @exportToken="exportSession($event)" />
-                  <app-info v-if="mainComponent == 'infoPage'"/>
+                  <app-info v-else/>
                 </keep-alive>
               </transition>
             </div>
@@ -124,7 +124,7 @@
       <!-- Bulma - Hero footer -->
       <footer class="footer">
         <div class="container">
-          <div class="columns ">
+          <div class="columns">
             <div class="column is-fullwidth">
               <app-controller
                 :is-running="isRunning"
@@ -199,7 +199,7 @@
 
 <script>
 // Imports
-import Vue from 'vue';
+import { ref, nextTick } from 'vue';
 import Controller from './components/Controller.vue';
 import Grid from './components/Grid.vue';
 import AppInfo from './components/AppInfo.vue';
@@ -211,30 +211,44 @@ export default {
     'app-info': AppInfo,
     'app-controller': Controller,
   },
-  data() {
-    return {
-      // The message that gets send down to app-grid at a steady interval
-      message: '',
+  setup() {
+    // The message that gets send down to app-grid at a steady interval
+      let message = ref('');
+
       // Export and import tokens that either get send down / come up
       // from app-grid
-      importToken: '',
-      exportToken: '',
+      let importToken = ref('');
+      let exportToken = ref('');
 
       // Booleans to determine what to show to the client
-      isRunning: false,
-      isNavbar: false,
-      isImport: false,
-      isExport: false,
+      let isRunning = ref(false);
+      let isNavbar = ref(false);
+      let isImport = ref(false);
+      let isExport = ref(false);
 
       // Used to determine the speed the application runs at
-      speed: 100,
-      intervalID: 0,
+      let speed = ref(100);
+      let intervalID = ref(0);
 
       // Variables to determine which page/scenario to show
-      mainComponent: 'gamePage',
-      selectedScenario: 'scenario',
-    };
+      let mainComponent = ref('gamePage');
+      let selectedScenario = ref('scenario');
+
+      return {
+        message,
+        importToken,
+        exportToken,
+        isRunning,
+        isNavbar,
+        isImport,
+        isExport,
+        speed,
+        intervalID,
+        mainComponent,
+        selectedScenario,
+      }
   },
+
   watch: {
     /**
      * Changes the importToken based on param.
@@ -295,7 +309,7 @@ export default {
      */
     updateMessage: function(newMessage) {
       this.message = newMessage;
-      Vue.nextTick(this.resetMessage);
+      nextTick(this.resetMessage);
     },
     /**
      * Resets the current message to an
@@ -428,8 +442,8 @@ body {
 .fade-leave-active {
   transition: opacity 0.35s linear;
 }
-.fade-enter,
-.fade-leave-active {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
