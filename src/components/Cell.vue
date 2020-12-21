@@ -2,7 +2,7 @@
   <div
     :class="isAlive.isAlive ? 'alive' : 'dead'"
     class="cell"
-    @click="reborn(true)"
+    @mousedown="reborn(true)"
     @mouseover="reborn(isMouseDown)"/>
 </template>
 <script>
@@ -58,6 +58,7 @@ export default {
 <style>
 .cell {
   flex: 1;
+  user-select: none;
   border-right: 1px solid #1a0707;
   border-bottom: 1px solid #1a0707;
   padding-bottom: 100%;
