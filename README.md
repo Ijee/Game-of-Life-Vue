@@ -1,10 +1,10 @@
-# Game of Life - Vue 2
-
+# Game of Life - Vue
 > John Conway's game of life implementation with vuejs, bulma and Fontawesome! This was a fun project to learn more about vue, webpack and all the fun stuff you can find on npm.
 > It should be fairly easy to strip the components down to a bare bone application and build bomberman, snake or even a maze with it easily.
 > Everything should be decently commented and work but let me know if you find any issues while running the app.
 
 ---
+**Note: The old vue 2.6 version of this repository can be found here [here](https://github.com/Ijee/Game-of-Life-Vue2/tree/vue/2.6). This repository has been upgraded to vue 3.** 
 
 ## Screenshot
 
@@ -32,9 +32,9 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run serve
 
-# build for production with minification
+# build for production with minification (requires local http server)
 npm run build
 ```
 

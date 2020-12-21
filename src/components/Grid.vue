@@ -29,10 +29,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import Cell from './Cell.vue';
 import Stats from './Stats.vue';
-export default {
+export default defineComponent({
   components: {
     'app-cell': Cell,
     'app-stats': Stats,
@@ -51,21 +52,30 @@ export default {
       type: Number,
     },
   },
-  data() {
-    return {
-      width: 46,
-      height: 20,
-      gridList: [],
+  setup() {
+      const width = 46;
+      const height = 20;
+      let gridList = ref([] as {isAlive: boolean}[][]);
 
       // Stats that get passed down to the app-stats component
-      currentTick: 0,
-      cellCount: 0,
-      cellsAlive: 0,
-      cellsCreated: 0,
+      let currentTick = ref(0);
+      let cellCount = ref(0);
+      let cellsAlive = ref(0);
+      let cellsCreated = ref(0);
 
       // A prop that gets used by the app-cell component (drag)
-      isMouseDown: false,
-    };
+      let isMouseDown = ref(false);
+
+      return {
+        width,
+        height,
+        gridList,
+        currentTick,
+        cellCount,
+        cellsAlive,
+        cellsCreated,
+        isMouseDown
+      }
   },
   computed: {},
   watch: {
@@ -115,12 +125,12 @@ export default {
      *
      * @param {number} x - the x position
      * @param {number} y - the y position
-     * @param {boolean} bool - the new boolean
+     * @param {boolean} alive - the new boolean
      */
-    setCell: function(x, y, bool) {
-      if (this.gridList[x][y].isAlive != bool) {
-        this.gridList[x][y].isAlive = bool;
-        this.updateCellCount(bool);
+    setCell: function(x: number, y: number, alive: boolean) {
+      if (this.gridList[x][y].isAlive != alive) {
+        this.gridList[x][y].isAlive = alive;
+        this.updateCellCount(alive);
       }
       // let row = this.gridList[x];
       // row.splice(y, 1, {isAlive: true});
@@ -131,7 +141,7 @@ export default {
      * every tick based on the game of life rules.
      */
     update: function() {
-      let tempArr = [];
+      let tempArr: boolean[][] = [];
       for (let i = 0; i < this.width; i++) {
         tempArr[i] = [];
         for (let j = 0; j < this.height; j++) {
@@ -180,7 +190,7 @@ export default {
      * @param {number} posY - the Y position
      * @return {number} neighbours - amount of neighbours
      */
-    getNeighbours: function(posX, posY) {
+    getNeighbours: function(posX: number, posY: number) {
       let neighbours = 0;
       if (posX <= this.width && posY <= this.height) {
         for (let offsetX = -1; offsetX < 2; offsetX++) {
@@ -250,7 +260,7 @@ export default {
         tempArr.forEach((element) => {
           element = element.substring(1, element.length - 1);
           let xy = element.split(',');
-          this.setCell(xy[0], xy[1], true);
+          this.setCell(+xy[0], +xy[1], true);
         });
       }
     },
@@ -275,7 +285,7 @@ export default {
      *
      * @param {boolean} bool - boolean based on cell isAlive status
      */
-    updateCellCount: function(bool) {
+    updateCellCount: function(bool: boolean) {
       if (bool) {
         this.cellsAlive++;
         this.cellsCreated++;
@@ -284,7 +294,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style lang="scss">

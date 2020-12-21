@@ -80,8 +80,10 @@
 
 </template>
 
-  <script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue"
+
+export default defineComponent({
   props: {
     isRunning: {
       default: false,
@@ -92,9 +94,7 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {};
-  },
+  setup() {},
   methods: {
     /**
      * emits the action that is requested
@@ -102,11 +102,11 @@ export default {
      *
      * @param {string} event - the event
      */
-    send: function(event) {
+    send: function(event: string) {
       this.$emit('send', event);
     },
   },
-};
+});
 </script>
 
   <style scoped>
